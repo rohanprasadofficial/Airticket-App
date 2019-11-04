@@ -4,6 +4,7 @@ package com.logarithm.airticket.flightticketbook.RestAPI;
 
 import com.logarithm.airticket.flightticketbook.ModelClass.Login;
 import com.logarithm.airticket.flightticketbook.ParametersClass.Credentials;
+import com.logarithm.airticket.flightticketbook.ParametersClass.Register;
 
 import org.json.JSONObject;
 
@@ -21,6 +22,11 @@ public interface APIInterface {
 
     @POST("auth/login/user")
     Call<Login> login(@Body Credentials credentials);
+
+
+
+    @POST("auth/register/user")
+    Call<Login> register(@Body Register credentials);
 
 
 

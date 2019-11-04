@@ -1,11 +1,13 @@
 package com.logarithm.airticket.flightticketbook.ParametersClass;
 
 public class Register {
-    private String companyId;
-    private String uniqueDeviceId;
+    private String email;
+    private String password;
+    private String name;
 
-    public Register(String companyId, String uniqueDeviceId) {
-        this.companyId = companyId;
-        this.uniqueDeviceId = uniqueDeviceId;
+    public Register(String id, String password,String name) {
+        this.email = id;
+        this.password = password;
+        this.name = name;
     }
 }
