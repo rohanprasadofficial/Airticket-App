@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:layout_marginLeft="18dp"
+    android:layout_marginRight="18dp"
+    android:layout_marginTop="15dp">
+
+        <ImageView
+            android:layout_width="22dp"
+            android:layout_height="25dp"
+            android:src="@drawable/leftarrowwhite" />
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="22dp"
+            android:scaleType="fitEnd"
+            android:src="@drawable/uploadingarchive" />
+    </LinearLayout>
+

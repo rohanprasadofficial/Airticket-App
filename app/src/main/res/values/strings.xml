@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">Flight Ticket Book</string>
+    <string name="country_prompt">Choose a country</string>
+    <string name="buy">Buy</string>
+
+    <string-array name="no_arrays">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+    </string-array>
+
+</resources>

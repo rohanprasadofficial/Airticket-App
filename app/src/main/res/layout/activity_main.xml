@@ -1,0 +1,317 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.logarithm.airticket.flightticketbook.MainActivity">
+
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#1be68d">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="180dp"
+            android:src="@drawable/back" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="180dp">
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingBottom="28dp">
+
+            <include layout="@layout/toolbar_main" />
+
+
+            <customfonts.MyTextView_Roboto_Bold
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="18dp"
+                android:text="Book your flight"
+                android:textColor="#000"
+                android:textStyle="bold"
+                android:textSize="40dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="18dp"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:id="@+id/linear1"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <customfonts.MyTextView_Lato_Medium
+                        android:id="@+id/text_roundtrip"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Round Trip"
+                        android:textColor="@color/textcolor"
+                        android:textSize="28dp" />
+
+                    <LinearLayout
+                        android:id="@+id/line11"
+                        android:layout_width="65dp"
+                        android:layout_height="2dp"
+                        android:background="#000"
+                        android:visibility="visible"
+                        android:orientation="vertical" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/linear2"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <customfonts.MyTextView_Lato_Medium
+                        android:id="@+id/text_oneway"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="One Way"
+                        android:textColor="#837a7a"
+                        android:textSize="28dp" />
+
+                    <LinearLayout
+                        android:id="@+id/line22"
+                        android:orientation="vertical"
+                        android:visibility="invisible"
+                        android:layout_marginLeft="4dp"
+                        android:layout_width="65dp"
+                        android:layout_height="2dp"
+                        android:background="#000" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </FrameLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:orientation="horizontal"
+        android:paddingLeft="16dp">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <customfonts.MyTextView_Roboto_Regular
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="9dp"
+                android:layout_marginLeft="32dp"
+                android:text="From" />
+
+            <AutoCompleteTextView
+                android:id="@+id/autoCompleteTextView"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:background="@android:color/transparent"
+                android:drawableLeft="@drawable/ic_placeholder"
+                android:drawablePadding="14dp"
+                android:maxLength="10"
+                android:maxLines="1"
+                android:theme="@style/MineCustomTabText"/>
+
+            <View
+                android:layout_width="130dp"
+                android:layout_height="1.5dp"
+                android:layout_marginBottom="15dp"
+                android:layout_marginLeft="30dp"
+                android:background="#edecf2" />
+
+            <customfonts.MyTextView_Roboto_Regular
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="9dp"
+                android:layout_marginLeft="32dp"
+                android:text="Depart" />
+
+            <customfonts.EditText_Roboto_Regular
+                android:id="@+id/txtdata"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:editable="false"
+                android:clickable="true"
+                android:background="@android:color/transparent"
+                android:drawableLeft="@drawable/ic_calendar"
+                android:drawablePadding="14dp"
+                android:theme="@style/MineCustomTabText"
+                android:maxLength="10"
+                android:maxLines="1" />
+
+            <View
+                android:layout_width="130dp"
+                android:layout_height="1.5dp"
+                android:layout_marginBottom="15dp"
+                android:layout_marginLeft="30dp"
+                android:background="#edecf2" />
+
+            <customfonts.MyTextView_Roboto_Regular
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="9dp"
+                android:layout_marginLeft="32dp"
+                android:text="Passengers" />
+
+            <Spinner
+                android:id="@+id/spinnerPassengers"
+                android:layout_width="150dp"
+                android:layout_height="29dp"
+                android:layout_marginBottom="18dp"
+                android:background="@android:color/transparent"
+                android:entries="@array/no_arrays"
+                android:maxLength="10"
+                android:maxLines="1"
+                android:paddingLeft="31dp"
+                android:prompt="@string/country_prompt" />
+
+            <View
+                android:layout_width="130dp"
+                android:layout_height="1.5dp"
+                android:layout_marginBottom="15dp"
+                android:layout_marginLeft="30dp"
+                android:background="#edecf2" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <customfonts.MyTextView_Roboto_Regular
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="9dp"
+                android:layout_marginLeft="32dp"
+                android:text="To" />
+
+            <AutoCompleteTextView
+                android:id="@+id/autoCompleteTextViewTo"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:background="@android:color/transparent"
+                android:paddingLeft="31dp"
+                android:text=""
+                android:theme="@style/MineCustomTabText" />
+
+            <View
+                android:layout_width="130dp"
+                android:layout_height="1.5dp"
+                android:layout_marginBottom="15dp"
+                android:layout_marginLeft="30dp"
+                android:background="#edecf2" />
+
+            <customfonts.MyTextView_Roboto_Regular
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="9dp"
+                android:layout_marginLeft="32dp"
+                android:text="Return" />
+
+            <customfonts.EditText_Roboto_Regular
+                android:id="@+id/txtdata2"
+                android:layout_width="150dp"
+                android:clickable="true"
+                android:editable="false"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:theme="@style/MineCustomTabText"
+                android:background="@android:color/transparent"
+                android:paddingLeft="31dp"
+                android:text=""
+                tools:ignore="DuplicateIds" />
+
+            <View
+                android:layout_width="130dp"
+                android:layout_height="1.5dp"
+                android:layout_marginBottom="15dp"
+                android:layout_marginLeft="30dp"
+                android:background="#edecf2" />
+
+            <customfonts.MyTextView_Roboto_Regular
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="9dp"
+                android:layout_marginLeft="32dp"
+                android:text="Class" />
+
+            <Spinner
+                android:id="@+id/spinnerClass"
+                android:layout_width="150dp"
+                android:layout_height="29dp"
+                android:layout_marginBottom="17dp"
+                android:background="@android:color/transparent"
+                android:paddingLeft="30dp"
+                android:text="AAAAAA"
+
+                />
+
+            <View
+                android:layout_width="130dp"
+                android:layout_height="1.5dp"
+                android:layout_marginLeft="30dp"
+                android:background="#edecf2" />
+
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="bottom"
+        android:gravity="bottom"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|right"
+            android:background="@drawable/rounded_corner_search"
+            android:orientation="vertical"
+            android:paddingBottom="25dp"
+            android:paddingLeft="35dp"
+            android:paddingRight="25dp"
+            android:paddingTop="30dp">
+
+            <ImageView
+                android:id="@+id/btn1"
+                android:layout_width="20dp"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
+                android:src="@drawable/ic_search" />
+
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>
