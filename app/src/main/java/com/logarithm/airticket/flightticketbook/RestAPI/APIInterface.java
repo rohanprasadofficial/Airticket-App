@@ -1,0 +1,80 @@
+package com.logarithm.airticket.flightticketbook.RestAPI;
+
+
+
+import com.logarithm.airticket.flightticketbook.ModelClass.Login;
+import com.logarithm.airticket.flightticketbook.ParametersClass.Credentials;
+
+import org.json.JSONObject;
+
+import okhttp3.ResponseBody;
+import retrofit2.Call;
+import retrofit2.http.Body;
+import retrofit2.http.GET;
+import retrofit2.http.HTTP;
+import retrofit2.http.Header;
+import retrofit2.http.POST;
+import retrofit2.http.Query;
+import retrofit2.http.Url;
+
+public interface APIInterface {
+
+    @POST("auth/login/user")
+    Call<Login> login(@Body Credentials credentials);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//
+//    @GET("user/profile/get")
+//    Call<DeviceInfo> getDeviceDetails(@Header("Authorization") String token);
+//
+//    @POST("apps/fingerprint-scanner/companies")
+//    Call<Register> registerDevice(@Body com.famoco.morphodemo.ParametersClass.Register register, @Header("Authorization") String token);
+//
+//    @HTTP(method = "DELETE", path = "apps/fingerprint-scanner/companies/famoco", hasBody = true)
+//    Call<Register> deregisterDevice(@Body Deregister deregister, @Header("Authorization") String token);
+//
+////    @GET("apps/fingerprint-scanner/companies/famoco")
+////    Call<ResponseBody> getDeviceReg(@Header("Authorization") String token);
+//
+//    @POST("apps/fingerprint-scanner/permissions")
+//    Call<com.famoco.morphodemo.Models.PermissionFP .Permission> getPermission(@Header("Authorization") String token, @Body Permission permission);
+//
+//    @POST
+//    Call<RegisterFP> registerFP(@Header("Authorization") String token, @Body com.famoco.morphodemo.ParametersClass.RegisterFP permission, @Url String url);
+//
+//    @GET
+//    Call<VerifyFP> verifyFP(@Header("Authorization") String token, @Url String url, @Query("uniqueDeviceId") String uniqueDeviceId);
+//
+//    @POST("apps/airport-security/fetch/permission")
+//    Call<com.famoco.morphodemo.Models.Airport.Permission> getAirportPermission(@Body AirportPermission requesteePublicKey, @Header("Authorization") String token);
+//
+//
+//    @POST("apps/airport-security/verify/passport")
+//    Call<com.famoco.morphodemo.Models.Airport.Permission> verifyPassport(@Body PassportPermission passportPermission, @Header("Authorization") String token);
+//
+//    @GET("apps/airport-security/fetch/passport")
+//    Call<FetchPassport> fetchPassport(@Header("Authorization") String token, @Query("requesteePublicKey") String requesteePublicKey);
+//
+//
+//
+//
+//    @GET("apps/airport-security/fetch/trips")
+//    Call<FetchTrips> fetchTrips(@Header("Authorization") String token, @Query("requesteePublicKey") String requesteePublicKey);
+//
+//    //Not used - Deprecated
+//    @GET
+//    Call<FetchIndividualTrip> fetchIndividualTrip(@Header("Authorization") String token, @Url String url, @Query("requesteePublicKey") String requesteePublicKey);
+
+}
