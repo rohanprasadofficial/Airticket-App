@@ -31,6 +31,8 @@ import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity {
 
+
+    public static String TOKEN="Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiYWlydGlja2V0LWRldiIsImlkIjoiNWRiYTZlMGU2ZTM1N2U0OGVkM2JjODUzIiwiZW1haWwiOiJhaXJ0aWNrZXRkZXZAZ21haWwuY29tIiwicGFzc3dvcmQiOiIkMmEkMTAkRzBmMVVSWVFyMUE4cUNsNy44ZXpCdVdwbDdnNkpRd0dxc011N0dsQTBXOC8zRG5nYm51UEciLCJwcm9maWxlcGljIjoiaHR0cHM6Ly9lZGxpZmUuZWR1Lm12L3dwLWNvbnRlbnQvdXBsb2Fkcy8yMDE3LzA1LzIwMTYxMDE0XzU4MDA2YmZkNzZkY2YucG5nIiwiaWF0IjoxNTczMDQ2NTQ5fQ.uKcra8Ydm23HcG9PnfJLhl8I3uuS3hglhJ7ALmTZrrY";
     Date date;
     private EditText edittext, edittext2;
     private TextView textView, text_roundtrip, text_oneway;
