@@ -28,9 +28,11 @@ public interface APIInterface {
     Call<Login> loginAdmin(@Body Credentials credentials);
 
 
-
     @POST("auth/register/user")
     Call<com.logarithm.airticket.flightticketbook.ModelClass.Register.Register> register(@Body Register credentials);
+
+    @POST("auth/register/admin")
+    Call<com.logarithm.airticket.flightticketbook.ModelClass.Register.Register> registerAdmin(@Body Register credentials);
 
 
 

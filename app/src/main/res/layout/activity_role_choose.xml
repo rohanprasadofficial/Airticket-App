@@ -6,8 +6,7 @@
     android:layout_height="match_parent"
     android:background="#1E1C1E"
     tools:context=".RoleChoose">
-
-
+    
     <LinearLayout
         android:id="@+id/linearLayout"
         android:layout_width="367dp"

@@ -1,4 +1,4 @@
-package com.logarithm.airticket.flightticketbook.RestAPI;
+package com.logarithm.airticket.flightticketbook;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -12,4 +12,5 @@ public class ConfirmTicketActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_confirm_ticket);
     }
+
 }

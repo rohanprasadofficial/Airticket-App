@@ -13,9 +13,9 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.logarithm.airticket.flightticketbook.ConfirmTicketActivity;
 import com.logarithm.airticket.flightticketbook.ModelClass.Flight;
 import com.logarithm.airticket.flightticketbook.R;
-import com.logarithm.airticket.flightticketbook.RestAPI.ConfirmTicketActivity;
 
 import java.util.List;
 
@@ -101,6 +101,9 @@ public class RecyclerAdapter_Flight extends RecyclerView.Adapter<RecyclerAdapter
         holder.btnBuy.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+
+
 
                 Intent intent = new Intent(mContext, ConfirmTicketActivity.class);
                 mContext.startActivity(intent);
