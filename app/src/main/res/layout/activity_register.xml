@@ -7,7 +7,6 @@
     android:background="#1E1C1E"
     tools:context=".Register">
 
-
     <LinearLayout
         android:id="@+id/linearLayout"
         android:layout_width="367dp"
@@ -55,7 +54,7 @@
                 android:paddingTop="15.44dp"
                 android:paddingRight="10dp"
                 android:paddingBottom="15.31dp"
-                android:textColor="@android:color/black"
+                android:textColor="#BCBCBC"
                 android:textColorHint="#BCBCBC"
                 android:textSize="14dp" />
 
@@ -81,7 +80,7 @@
                 android:paddingTop="15.44dp"
                 android:paddingRight="10dp"
                 android:paddingBottom="15.31dp"
-                android:textColor="@android:color/black"
+                android:textColor="#BCBCBC"
                 android:textColorHint="#BCBCBC"
                 android:textSize="14dp" />
 
@@ -109,7 +108,7 @@
                 android:paddingEnd="22dp"
                 android:paddingRight="22dp"
                 android:paddingBottom="15.31dp"
-                android:textColor="@android:color/black"
+                android:textColor="#BCBCBC"
                 android:textColorHint="#BCBCBC"
                 android:textSize="14dp" />
 

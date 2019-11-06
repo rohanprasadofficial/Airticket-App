@@ -22,15 +22,14 @@ import retrofit2.Response;
 
 public class Register extends AppCompatActivity {
 
-
     public static String  TOKEN_ID=null;
     TextView edt_username,edt_name,edt_pass;
     Button btn_login;
-    AlertDialog alertDialog;;
+    AlertDialog alertDialog;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
+        setContentView(R.layout.activity_register);
         edt_username=findViewById(R.id.edt_username);
         edt_name=findViewById(R.id.edt_name);
         edt_pass=findViewById(R.id.edt_pass);
@@ -42,7 +41,7 @@ public class Register extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 alertDialog = new SpotsDialog.Builder().setContext(Register.this).setTheme(R.style.Custom).build();
-                alertDialog.setMessage("Registerinig... ");
+                alertDialog.setMessage("Registering... ");
                 alertDialog.show();
 
                 if (edt_pass.getText().length() > 0 && edt_username.getText().length() > 0) {
@@ -51,18 +50,18 @@ public class Register extends AppCompatActivity {
                     com.logarithm.airticket.flightticketbook.ParametersClass.Register credentials = new com.logarithm.airticket.flightticketbook.ParametersClass.Register(edt_username.getText().toString(), edt_pass.getText().toString(),edt_name.getText().toString());
 
                     final APIInterface apiService = APIClient.getClient().create(APIInterface.class);
-                    Call<com.logarithm.airticket.flightticketbook.ModelClass.Login> call2 = apiService.login(credentials);
-                    call2.enqueue(new Callback<com.logarithm.airticket.flightticketbook.ModelClass.Login>() {
+                    Call<com.logarithm.airticket.flightticketbook.ModelClass.Register.Register> call2 = apiService.register(credentials);
+                    call2.enqueue(new Callback<com.logarithm.airticket.flightticketbook.ModelClass.Register.Register>() {
                         @Override
-                        public void onResponse(Call<com.logarithm.airticket.flightticketbook.ModelClass.Login> call, Response<com.logarithm.airticket.flightticketbook.ModelClass.Login> response) {
+                        public void onResponse(Call<com.logarithm.airticket.flightticketbook.ModelClass.Register.Register> call, Response<com.logarithm.airticket.flightticketbook.ModelClass.Register.Register> response) {
                             try {
                                 alertDialog.dismiss();
                                 if (response.body().getSuccess()) {
-                                    TOKEN_ID=response.body().getToken();
-                                    startActivity(new Intent(getApplicationContext(),MainActivity.class));
+                                    Toast.makeText(Register.this, "Sucessfully Registered !", Toast.LENGTH_SHORT).show();
+                                    startActivity(new Intent(getApplicationContext(),Login.class));
                                     finish();
                                 } else {
-                                    Toast.makeText(Register.this,"Invalid Credentials !", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(Register.this,"User already exist !", Toast.LENGTH_SHORT).show();
                                 }
                                 //   alertDialog.dismiss();
 
@@ -75,7 +74,7 @@ public class Register extends AppCompatActivity {
                         }
 
                         @Override
-                        public void onFailure(Call<com.logarithm.airticket.flightticketbook.ModelClass.Login> call, Throwable t) {
+                        public void onFailure(Call<com.logarithm.airticket.flightticketbook.ModelClass.Register.Register> call, Throwable t) {
                             Toast.makeText(Register.this, "Something Went Wrong", Toast.LENGTH_SHORT).show();
 
                             alertDialog.dismiss();

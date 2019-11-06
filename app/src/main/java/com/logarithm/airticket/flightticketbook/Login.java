@@ -25,7 +25,7 @@ public class Login extends AppCompatActivity {
 
 
     public static String  TOKEN_ID=null;
-    TextView edt_username,edt_pass;
+    TextView edt_username,edt_pass,register;
     Button btn_login;
     AlertDialog alertDialog;;
     @Override
@@ -35,7 +35,16 @@ public class Login extends AppCompatActivity {
         edt_username=findViewById(R.id.edt_username);
         edt_pass=findViewById(R.id.edt_pass);
         btn_login=findViewById(R.id.btn_login);
+        register=findViewById(R.id.registerView);
         Log.i("ACT ","LOGIN");
+
+
+        register.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getApplicationContext(),Register.class));
+            }
+        });
 
         btn_login.setOnClickListener(new View.OnClickListener() {
             @Override

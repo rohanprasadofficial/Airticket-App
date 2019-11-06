@@ -55,7 +55,7 @@
                 android:paddingTop="15.44dp"
                 android:paddingRight="10dp"
                 android:paddingBottom="15.31dp"
-                android:textColor="@android:color/black"
+                android:textColor="#BCBCBC"
                 android:textColorHint="#BCBCBC"
                 android:textSize="14dp" />
 
@@ -83,7 +83,7 @@
                 android:paddingEnd="22dp"
                 android:paddingRight="22dp"
                 android:paddingBottom="15.31dp"
-                android:textColor="@android:color/black"
+                android:textColor="#BCBCBC"
                 android:textColorHint="#BCBCBC"
                 android:textSize="14dp" />
 
@@ -119,7 +119,22 @@
                     android:textSize="14dp" />
 
             </android.support.v7.widget.CardView>
+
+
         </LinearLayout>
+
+        <TextView
+            android:id="@+id/registerView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_marginBottom="15dp"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/montserrat"
+            android:paddingStart="31dp"
+            android:text="Register for new account "
+            android:textColor="#fff"
+            android:textSize="13sp" />
 
 
     </LinearLayout>

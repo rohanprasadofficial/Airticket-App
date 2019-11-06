@@ -11,7 +11,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Register"></activity>
+        <activity android:name=".Register"
+            android:theme="@style/AppTheme.NoActionBar" ></activity>
         <activity
             android:name=".Login"
             android:theme="@style/AppTheme.NoActionBar" />
