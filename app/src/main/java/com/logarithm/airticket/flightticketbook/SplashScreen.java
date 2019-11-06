@@ -33,7 +33,7 @@ public class SplashScreen extends AppCompatActivity {
     public void startNextActivity(){
         Bundle bundle = ActivityOptionsCompat.makeCustomAnimation(getApplicationContext(),
                 android.R.anim.fade_in, android.R.anim.fade_out).toBundle();
-        Intent intent = new Intent(SplashScreen.this, Login.class);
+        Intent intent = new Intent(SplashScreen.this, RoleChoose.class);
         startActivity(intent, bundle);
     }
 }
