@@ -11,9 +11,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".AddFlight"
+        <activity android:name=".AddAirport"></activity>
+        <activity
+            android:name=".AddFlight"
             android:theme="@style/AppTheme.NoActionBar">
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -22,9 +23,7 @@
         </activity>
         <activity
             android:name=".AdminDashboard"
-            android:theme="@style/AppTheme.NoActionBar">
-
-        </activity>
+            android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity
             android:name=".RegisterAdmin"
             android:theme="@style/AppTheme.NoActionBar" />
@@ -42,7 +41,7 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".SplashScreen"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".MainActivity"
             android:theme="@style/AppTheme.NoActionBar" />
