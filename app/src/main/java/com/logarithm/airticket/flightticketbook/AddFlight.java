@@ -18,13 +18,13 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+import static com.logarithm.airticket.flightticketbook.LoginAdmin.TOKEN_ID_ADMIN;
+
 public class AddFlight extends AppCompatActivity {
 
 
     TextView name,flightNo,flightID;
     Button addFlight;
-
-
     AlertDialog alertDialog;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,15 +41,14 @@ public class AddFlight extends AppCompatActivity {
         addFlight.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 alertDialog = new SpotsDialog.Builder().setContext(AddFlight.this).setTheme(R.style.Custom).build();
-                alertDialog.setMessage("Logging In... ");
+                alertDialog.setMessage("Adding Flight... ");
                 alertDialog.show();
                 if (flightID.getText().length() > 0 && flightNo.getText().length() > 0 && flightID.length() >0 )  {
                     //   Credentials credentials=new Credentials(editTextUserId.getText().toString(),editTextPassword.getText().toString());
                     com.logarithm.airticket.flightticketbook.ParametersClass.AddFlight credentials = new com.logarithm.airticket.flightticketbook.ParametersClass.AddFlight(name.getText().toString(),flightNo.getText().toString(),flightID.getText().toString());
                     final APIInterface apiService = APIClient.getClient().create(APIInterface.class);
-                    Call<com.logarithm.airticket.flightticketbook.ModelClass.Response> call2 = apiService.login(credentials);
+                    Call<com.logarithm.airticket.flightticketbook.ModelClass.Response> call2 = apiService.addFlight(TOKEN_ID_ADMIN,credentials);
                     call2.enqueue(new Callback<com.logarithm.airticket.flightticketbook.ModelClass.Response>() {
                         @Override
                         public void onResponse(Call<com.logarithm.airticket.flightticketbook.ModelClass.Response> call, Response<com.logarithm.airticket.flightticketbook.ModelClass.Response> response) {
@@ -57,10 +56,11 @@ public class AddFlight extends AppCompatActivity {
                                 alertDialog.dismiss();
                                 if (response.body().getSuccess()) {
                                   //  TOKEN_ID=response.body().getToken();
-                                    startActivity(new Intent(getApplicationContext(),MainActivity.class));
+                                    Toast.makeText(AddFlight.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
+                                    startActivity(new Intent(getApplicationContext(),AdminDashboard.class));
                                     finish();
                                 } else {
-                                    Toast.makeText(AddFlight.this,"Invalid Credentials !", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(AddFlight.this,response.body().getMessage(), Toast.LENGTH_SHORT).show();
                                 }
                                 //   alertDialog.dismiss();
 
@@ -75,7 +75,6 @@ public class AddFlight extends AppCompatActivity {
                         @Override
                         public void onFailure(Call<com.logarithm.airticket.flightticketbook.ModelClass.Response> call, Throwable t) {
                             Toast.makeText(AddFlight.this, "Something Went Wrong", Toast.LENGTH_SHORT).show();
-
                             alertDialog.dismiss();
 
                         }

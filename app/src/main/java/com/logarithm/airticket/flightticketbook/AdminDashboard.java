@@ -27,7 +27,7 @@ public class AdminDashboard extends AppCompatActivity {
         deleteFlight=findViewById(R.id.btn_deleteflight);
         addFlight=findViewById(R.id.btn_addflight);
 
-        addAirport.setOnClickListener(new View.OnClickListener() {
+        addFlight.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(getApplicationContext(),AddFlight.class));

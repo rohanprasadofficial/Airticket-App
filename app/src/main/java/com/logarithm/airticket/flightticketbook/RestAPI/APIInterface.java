@@ -25,10 +25,8 @@ public interface APIInterface {
     @POST("auth/login/user")
     Call<Login> login(@Body Credentials credentials);
 
-
     @POST("auth/login/admin")
     Call<Login> loginAdmin(@Body Credentials credentials);
-
 
     @POST("auth/register/user")
     Call<com.logarithm.airticket.flightticketbook.ModelClass.Register.Register> register(@Body Register credentials);
@@ -36,9 +34,25 @@ public interface APIInterface {
     @POST("auth/register/admin")
     Call<com.logarithm.airticket.flightticketbook.ModelClass.Register.Register> registerAdmin(@Body Register credentials);
 
-
     @POST("flight/addflight")
     Call<Response> addFlight(@Header("Authorization") String token ,@Body AddFlight credentials);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
