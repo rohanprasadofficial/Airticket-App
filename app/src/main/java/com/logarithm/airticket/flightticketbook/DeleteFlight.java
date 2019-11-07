@@ -41,54 +41,66 @@ public class DeleteFlight extends AppCompatActivity {
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getApplicationContext());
         recyclerView.setLayoutManager(linearLayoutManager); // set LayoutManager to RecyclerVie
 
-
-
         recyclerView.addOnItemTouchListener(
                 new MyRecyclerItemClickListener(getApplicationContext(), new MyRecyclerItemClickListener.OnItemClickListener() {
                     @Override
                     public void onItemClick(View view, final int position) {
 
-                        alertDialog = new SpotsDialog.Builder().setContext(DeleteFlight.this).setTheme(R.style.Custom).build();
-                        alertDialog.setMessage("Deleting Flight.. ");
-                        alertDialog.show();
+                        Toast.makeText(DeleteFlight.this, tripList.get(position).getName(), Toast.LENGTH_SHORT).show();
+                        Log.i("Ds",tripList.get(position).getName());
 
-                        final APIInterface apiService = APIClient.getClient().create(APIInterface.class);
+                        try {
+                            alertDialog = new SpotsDialog.Builder().setContext(DeleteFlight.this).setTheme(R.style.Custom).build();
+                            alertDialog.setMessage("Deleting Flight.. ");
+                            alertDialog.show();
 
-                        PassportPermission passportPermission=new PassportPermission(SCANNED_TEXT,trigger);
-                        Call<Permission> call2 = apiService.verifyPassport(passportPermission,"Bearer "+ MainActivity.TOKEN_ID);
-                        call2.enqueue(new Callback<Permission>() {
-                            @Override
-                            public void onResponse(Call<Permission> call, Response<Permission> response) {
-                                try {
-                                    alertDialog.dismiss();
-                                    Log.i("JSON", response.body().getSuccess().toString());
-                                    if (response.body().getSuccess()) {
-                                        Toast.makeText(Trips.this, "Passport verified successfully!", Toast.LENGTH_SHORT).show();
-                                        finish();
-                                    } else {
-                                        Toast.makeText(Trips.this, response.body().getError(), Toast.LENGTH_SHORT).show();
+                            final APIInterface apiService = APIClient.getClient().create(APIInterface.class);
+
+                            com.logarithm.airticket.flightticketbook.ParametersClass.DeleteFlight deleteFlight = new com.logarithm.airticket.flightticketbook.ParametersClass.DeleteFlight(tripList.get(position).getName(), tripList.get(position).getFlightNumber(), tripList.get(position).getFlightID());
+
+                            Call<com.logarithm.airticket.flightticketbook.ModelClass.Response> call2 = apiService.deleteFlight(TOKEN_ID_ADMIN, deleteFlight);
+                            call2.enqueue(new Callback<com.logarithm.airticket.flightticketbook.ModelClass.Response>() {
+                                @Override
+                                public void onResponse(Call<com.logarithm.airticket.flightticketbook.ModelClass.Response> call, Response<com.logarithm.airticket.flightticketbook.ModelClass.Response> response) {
+                                    try {
+                                        alertDialog.dismiss();
+                                        if (response.body().getSuccess()) {
+                                            Toast.makeText(DeleteFlight.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
+                                            finish();
+                                        } else {
+                                            Toast.makeText(DeleteFlight.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
+                                        }
+
+                                    } catch (Exception e) {
+                                        alertDialog.dismiss();
+                                        Toast.makeText(DeleteFlight.this, "Something Went Wrong-1 ", Toast.LENGTH_SHORT).show();
+                                        e.printStackTrace();
+
                                     }
-
-                                } catch (Exception e) {
-                                    alertDialog.dismiss();
-                                    Toast.makeText(Trips.this, "Something Went Wrong-1 ", Toast.LENGTH_SHORT).show();
-                                    e.printStackTrace();
-
                                 }
-                            }
 
-                            @Override
-                            public void onFailure(Call<Permission> call, Throwable t) {
-                                alertDialog.dismiss();
-                                t.printStackTrace();
-                                Toast.makeText(Trips.this, "Something Went Wrong -2", Toast.LENGTH_SHORT).show();
-                            }
-                        });
+                                @Override
+                                public void onFailure(Call<com.logarithm.airticket.flightticketbook.ModelClass.Response> call, Throwable t) {
+                                    alertDialog.dismiss();
+                                    t.printStackTrace();
+                                    Toast.makeText(DeleteFlight.this, "Something Went Wrong -2", Toast.LENGTH_SHORT).show();
+                                }
 
+
+                            });
+
+
+                        }catch (Exception e)
+
+                        {
+                            e.printStackTrace();
+                        }
 
                     }
                 })
         );
+
+
 
         // call the constructor of CustomAdapter to send the reference and data to Adapter
         alertDialog = new SpotsDialog.Builder().setContext(DeleteFlight.this).setTheme(R.style.Custom).build();
@@ -102,8 +114,8 @@ public class DeleteFlight extends AppCompatActivity {
             public void onResponse(Call<com.logarithm.airticket.flightticketbook.ModelClass.DeleteFlight.DeleteFlight> call, Response<com.logarithm.airticket.flightticketbook.ModelClass.DeleteFlight.DeleteFlight> response) {
                 try {
                     alertDialog.dismiss();
-                    Log.i("JSON", response.body().getStatus().toString());
-                    if (response.body().getStatus()) {
+                    Log.i("JSON", response.body().getSuccess().toString());
+                    if (response.body().getSuccess()) {
                         alertDialog.dismiss();
                         tripList = response.body().getMessage();
                         if(tripList.size()==0)
@@ -115,7 +127,7 @@ public class DeleteFlight extends AppCompatActivity {
 
 
                     } else {
-                        Log.i("TEST", response.body().getStatus().toString());
+                        Log.i("TEST", response.body().getMessage().toString());
                     }
                 } catch (Exception e) {
                     alertDialog.dismiss();

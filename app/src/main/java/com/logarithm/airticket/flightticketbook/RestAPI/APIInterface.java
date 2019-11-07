@@ -15,6 +15,7 @@ import org.json.JSONObject;
 import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.http.Body;
+import retrofit2.http.DELETE;
 import retrofit2.http.GET;
 import retrofit2.http.HTTP;
 import retrofit2.http.Header;
@@ -44,6 +45,10 @@ public interface APIInterface {
 
     @GET("flight/getallflights")
     Call<DeleteFlight> getAllflights(@Header("Authorization") String token);
+
+
+    @HTTP(method = "DELETE", path = "flight/deleteflight", hasBody = true)
+    Call<Response> deleteFlight(@Header("Authorization") String token, @Body com.logarithm.airticket.flightticketbook.ParametersClass.DeleteFlight deleteFlight);
 
 
 

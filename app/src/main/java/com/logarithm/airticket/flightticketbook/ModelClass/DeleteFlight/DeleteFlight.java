@@ -7,14 +7,14 @@ import com.google.gson.annotations.SerializedName;
 
 public class DeleteFlight {
 
-    @SerializedName("status")
+    @SerializedName("success")
     @Expose
     private Boolean status;
     @SerializedName("message")
     @Expose
     private List<Message> message = null;
 
-    public Boolean getStatus() {
+    public Boolean getSuccess() {
         return status;
     }
 
