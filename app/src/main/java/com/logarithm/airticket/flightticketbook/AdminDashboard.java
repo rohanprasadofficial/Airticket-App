@@ -43,6 +43,13 @@ public class AdminDashboard extends AppCompatActivity {
         });
 
 
+        deleteFlight.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getApplicationContext(),DeleteFlight.class));
+            }
+        });
+
 
 
 

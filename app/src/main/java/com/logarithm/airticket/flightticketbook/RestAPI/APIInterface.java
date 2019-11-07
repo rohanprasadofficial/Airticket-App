@@ -2,6 +2,7 @@ package com.logarithm.airticket.flightticketbook.RestAPI;
 
 
 
+import com.logarithm.airticket.flightticketbook.ModelClass.DeleteFlight.DeleteFlight;
 import com.logarithm.airticket.flightticketbook.ModelClass.Login;
 import com.logarithm.airticket.flightticketbook.ModelClass.Response;
 import com.logarithm.airticket.flightticketbook.ParametersClass.AddAirport;
@@ -40,6 +41,9 @@ public interface APIInterface {
 
     @POST("flight/addairport")
     Call<Response> addAirport(@Header("Authorization") String token ,@Body AddAirport name);
+
+    @GET("flight/getallflights")
+    Call<DeleteFlight> getAllflights(@Header("Authorization") String token);
 
 
 
