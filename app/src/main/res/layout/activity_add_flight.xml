@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#1E1C1E"
+    tools:context=".AddFlight">
+
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="367dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="74dp"
+        android:layout_marginBottom="296dp"
+        android:gravity="center_vertical"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.375">
+
+        <TextView
+            android:id="@+id/textView_item"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_marginBottom="15dp"
+            android:fontFamily="@font/montserrat"
+            android:paddingStart="31dp"
+            android:text="Add Flight"
+            android:textColor="#fff"
+            android:textSize="20sp" />
+
+
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="31dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginRight="31dp"
+            app:cardBackgroundColor="@android:color/white"
+            app:cardCornerRadius="5dp">
+
+            <EditText
+                android:id="@+id/edt_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#4A484A"
+                android:hint="Flight Name"
+                android:inputType="textEmailAddress"
+                android:paddingLeft="26dp"
+                android:paddingTop="15.44dp"
+                android:paddingRight="10dp"
+                android:paddingBottom="15.31dp"
+                android:textColor="#BCBCBC"
+                android:textColorHint="#BCBCBC"
+                android:textSize="14dp" />
+
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="31dp"
+            android:layout_marginTop="10.25dp"
+            android:layout_marginRight="31dp"
+            android:layout_marginBottom="10dp"
+            app:cardBackgroundColor="@android:color/white"
+            app:cardCornerRadius="5dp">
+
+            <EditText
+                android:id="@+id/edt_flightNumber"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#4A484A"
+                android:hint="Flight Number"
+                android:inputType="textPassword"
+                android:paddingLeft="26dp"
+                android:paddingTop="15.44dp"
+                android:paddingEnd="22dp"
+                android:paddingRight="22dp"
+                android:paddingBottom="15.31dp"
+                android:textColor="#BCBCBC"
+                android:textColorHint="#BCBCBC"
+                android:textSize="14dp" />
+
+        </android.support.v7.widget.CardView>
+
+
+
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="31dp"
+            android:layout_marginTop="10.25dp"
+            android:layout_marginRight="31dp"
+            android:layout_marginBottom="10dp"
+            app:cardBackgroundColor="@android:color/white"
+            app:cardCornerRadius="5dp">
+
+            <EditText
+                android:id="@+id/edt_flightID"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#4A484A"
+                android:hint="FlightID"
+                android:inputType="textPassword"
+                android:paddingLeft="26dp"
+                android:paddingTop="15.44dp"
+                android:paddingEnd="22dp"
+                android:paddingRight="22dp"
+                android:paddingBottom="15.31dp"
+                android:textColor="#BCBCBC"
+                android:textColorHint="#BCBCBC"
+                android:textSize="14dp" />
+
+        </android.support.v7.widget.CardView>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="30dp"
+            android:paddingRight="30dp"
+            android:layout_gravity="center_horizontal"
+            android:orientation="horizontal">
+
+
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:cardBackgroundColor="@android:color/white"
+                app:cardCornerRadius="10dp">
+
+                <Button
+                    android:id="@+id/btn_add"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:background="@drawable/rounded_corner"
+                    android:paddingTop="8.7dp"
+                    android:paddingBottom="8.71dp"
+                    android:text="ADD FLIGHT"
+                    android:textAlignment="center"
+                    android:textAllCaps="false"
+                    android:textSize="14dp" />
+
+            </android.support.v7.widget.CardView>
+
+
+        </LinearLayout>
+
+
+
+    </LinearLayout>
+
+</android.support.constraint.ConstraintLayout>

@@ -3,6 +3,8 @@ package com.logarithm.airticket.flightticketbook.RestAPI;
 
 
 import com.logarithm.airticket.flightticketbook.ModelClass.Login;
+import com.logarithm.airticket.flightticketbook.ModelClass.Response;
+import com.logarithm.airticket.flightticketbook.ParametersClass.AddFlight;
 import com.logarithm.airticket.flightticketbook.ParametersClass.Credentials;
 import com.logarithm.airticket.flightticketbook.ParametersClass.Register;
 
@@ -35,6 +37,8 @@ public interface APIInterface {
     Call<com.logarithm.airticket.flightticketbook.ModelClass.Register.Register> registerAdmin(@Body Register credentials);
 
 
+    @POST("flight/addflight")
+    Call<Response> addFlight(@Header("Authorization") String token ,@Body AddFlight credentials);
 
 
 

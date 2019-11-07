@@ -24,7 +24,7 @@ import retrofit2.Response;
 public class LoginAdmin extends AppCompatActivity {
 
 
-    public static String  TOKEN_ID=null;
+    public static String  TOKEN_ID_ADMIN="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiYWRtaW4iLCJpZCI6IjVkYzJmY2Y0N2UzOGQ2MzY2NThkOGQ3NSIsImVtYWlsIjoiYWRtaW5AZ21haWwuY29tIiwicGFzc3dvcmQiOiIkMmEkMTAkNkM1ZTF0QnEyYjZCUkdtbGxPMTZnZXVVOEQzOFA1S1dkQkJRL0JDNGdOeEdGVjNsaC85S2UiLCJwcm9maWxlcGljIjoiaHR0cHM6Ly9lZGxpZmUuZWR1Lm12L3dwLWNvbnRlbnQvdXBsb2Fkcy8yMDE3LzA1LzIwMTYxMDE0XzU4MDA2YmZkNzZkY2YucG5nIiwiaWF0IjoxNTczMTM2MzU1fQ.i9okD-2eR7_rOAzb8Zo1URQLFDdQBfinNvexPGnOtPU";
     TextView edt_username,edt_pass,register;
     Button btn_login;
     AlertDialog alertDialog;;
@@ -57,7 +57,6 @@ public class LoginAdmin extends AppCompatActivity {
 
                     //   Credentials credentials=new Credentials(editTextUserId.getText().toString(),editTextPassword.getText().toString());
                     Credentials credentials = new Credentials(edt_username.getText().toString(), edt_pass.getText().toString());
-
                     final APIInterface apiService = APIClient.getClient().create(APIInterface.class);
                     Call<com.logarithm.airticket.flightticketbook.ModelClass.Login> call2 = apiService.loginAdmin(credentials);
                     call2.enqueue(new Callback<com.logarithm.airticket.flightticketbook.ModelClass.Login>() {
@@ -66,7 +65,7 @@ public class LoginAdmin extends AppCompatActivity {
                             try {
                                 alertDialog.dismiss();
                                 if (response.body().getSuccess()) {
-                                    TOKEN_ID=response.body().getToken();
+                                    TOKEN_ID_ADMIN=response.body().getToken();
                                     startActivity(new Intent(getApplicationContext(),MainActivity.class));
                                     finish();
                                 } else {

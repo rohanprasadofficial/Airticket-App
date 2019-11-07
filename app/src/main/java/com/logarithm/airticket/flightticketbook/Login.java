@@ -27,7 +27,7 @@ public class Login extends AppCompatActivity {
     public static String  TOKEN_ID=null;
     TextView edt_username,edt_pass,register;
     Button btn_login;
-    AlertDialog alertDialog;;
+    AlertDialog alertDialog;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
