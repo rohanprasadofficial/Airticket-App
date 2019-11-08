@@ -45,12 +45,13 @@
             app:cardBackgroundColor="@android:color/white"
             app:cardCornerRadius="5dp">
 
+
             <EditText
                 android:id="@+id/edt_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="#4A484A"
-                android:hint="Flight Name"
+                android:hint="Airport Name"
                 android:inputType="textEmailAddress"
                 android:paddingLeft="26dp"
                 android:paddingTop="15.44dp"
