@@ -176,31 +176,31 @@
                 android:layout_marginLeft="30dp"
                 android:background="#edecf2" />
 
-            <customfonts.MyTextView_Roboto_Regular
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="9dp"
-                android:layout_marginLeft="32dp"
-                android:text="Passengers" />
+            <!--<customfonts.MyTextView_Roboto_Regular-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_marginBottom="9dp"-->
+                <!--android:layout_marginLeft="32dp"-->
+                <!--android:text="Passengers" />-->
 
-            <Spinner
-                android:id="@+id/spinnerPassengers"
-                android:layout_width="150dp"
-                android:layout_height="29dp"
-                android:layout_marginBottom="18dp"
-                android:background="@android:color/transparent"
-                android:entries="@array/no_arrays"
-                android:maxLength="10"
-                android:maxLines="1"
-                android:paddingLeft="31dp"
-                android:prompt="@string/country_prompt" />
+            <!--<Spinner-->
+                <!--android:id="@+id/spinnerPassengers"-->
+                <!--android:layout_width="150dp"-->
+                <!--android:layout_height="29dp"-->
+                <!--android:layout_marginBottom="18dp"-->
+                <!--android:background="@android:color/transparent"-->
+                <!--android:entries="@array/no_arrays"-->
+                <!--android:maxLength="10"-->
+                <!--android:maxLines="1"-->
+                <!--android:paddingLeft="31dp"-->
+                <!--android:prompt="@string/country_prompt" />-->
 
-            <View
-                android:layout_width="130dp"
-                android:layout_height="1.5dp"
-                android:layout_marginBottom="15dp"
-                android:layout_marginLeft="30dp"
-                android:background="#edecf2" />
+            <!--<View-->
+                <!--android:layout_width="130dp"-->
+                <!--android:layout_height="1.5dp"-->
+                <!--android:layout_marginBottom="15dp"-->
+                <!--android:layout_marginLeft="30dp"-->
+                <!--android:background="#edecf2" />-->
         </LinearLayout>
 
         <LinearLayout

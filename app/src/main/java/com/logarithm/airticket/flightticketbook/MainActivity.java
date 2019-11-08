@@ -56,6 +56,10 @@ public class MainActivity extends AppCompatActivity {
     private LinearLayout linear1, linear2, line11, line22;
     Calendar myCalendar = Calendar.getInstance();
     Calendar myCalendar2 = Calendar.getInstance();
+    AutoCompleteTextView actv;
+    AutoCompleteTextView actvv;
+    ArrayAdapter<String> dataAdapter;
+    Spinner sp;
 
 
     Spinner spinner;
@@ -64,38 +68,16 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Spinner spinner = (Spinner) findViewById(R.id.spinnerPassengers);
-
-
+//        Spinner spinner = (Spinner) findViewById(R.id.spinnerPassengers);
         fruits=new ArrayList<>();
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
         list.add(new ItemData_Cusine("1",R.drawable.ic_onewoman));
         list.add(new ItemData_Cusine("2",R.drawable.ic_family));
         list.add(new ItemData_Cusine("3",R.drawable.ic_threepersons));
-        Spinner sp = (Spinner) findViewById(R.id.spinnerPassengers);
-        Spinner_Cusine_DataAdapter adapter = new Spinner_Cusine_DataAdapter(MainActivity.this, list);
-        sp.setAdapter(adapter);
-        spinner.setAdapter(adapter);
-
-
+//        sp = (Spinner) findViewById(R.id.spinnerPassengers);
+//        Spinner_Cusine_DataAdapter adapter = new Spinner_Cusine_DataAdapter(MainActivity.this, list);
+//        sp.setAdapter(adapter);
+//        spinner.setAdapter(adapter);
 
         addItemsOnSpinner2();
         addListenerOnButton();
@@ -109,7 +91,6 @@ public class MainActivity extends AppCompatActivity {
 //        line22 = (LinearLayout) findViewById(R.id.line22);
         edittext = (EditText) findViewById(R.id.txtdata);
 //        edittext2 = (EditText) findViewById(R.id.txtdata2);
-
 
         try {
             alertDialog = new SpotsDialog.Builder().setContext(MainActivity.this).setTheme(R.style.Custom).build();
@@ -238,8 +219,6 @@ public class MainActivity extends AppCompatActivity {
 //        });
 
 
-
-
     }
     private void updateLabel() {
         String myFormat = "MMM dd"; //In which you need put here
@@ -267,7 +246,7 @@ public class MainActivity extends AppCompatActivity {
         list.add("Business Class");
         list.add("Premium Economy");
         list.add("Economy Class");
-        ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this,
+        dataAdapter = new ArrayAdapter<String>(this,
                 android.R.layout.simple_spinner_item, list);
 
         dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -283,7 +262,7 @@ public class MainActivity extends AppCompatActivity {
 
     // get the selected dropdown list value
     public void addListenerOnButton() {
-        spinner1 = (Spinner) findViewById(R.id.spinnerPassengers);
+//        spinner1 = (Spinner) findViewById(R.id.spinnerPassengers);
         spinner2 = (Spinner) findViewById(R.id.spinnerClass);
 
 
@@ -291,6 +270,13 @@ public class MainActivity extends AppCompatActivity {
         img.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+
+                Log.i("FROM",actv.getText().toString());
+                Log.i("TO",actvv.getText().toString());
+                 Log.i("DATE",edittext.getText().toString());
+                Log.i("CLASS",spinner2.getSelectedItem().toString());
+
                 Intent intent = new Intent(MainActivity.this, TicketActivity.class);
                 startActivity(intent);
             }
@@ -301,7 +287,7 @@ public class MainActivity extends AppCompatActivity {
                 (this, android.R.layout.select_dialog_item, fruits);
 
         //Getting the instance of AutoCompleteTextView
-        AutoCompleteTextView actv = (AutoCompleteTextView) findViewById(R.id.autoCompleteTextView);
+        actv = (AutoCompleteTextView) findViewById(R.id.autoCompleteTextView);
         actv.setThreshold(1);//will start working from first character
         actv.setAdapter(adapter);//setting the adapter data into the AutoCompleteTextView
         actv.setTextColor(Color.BLACK);
@@ -309,16 +295,13 @@ public class MainActivity extends AppCompatActivity {
         ArrayAdapter<String> adapter_new = new ArrayAdapter<String>
                 (this, android.R.layout.select_dialog_item, fruits);
 
-
         //Getting the instance of AutoCompleteTextView
-        AutoCompleteTextView actvv = (AutoCompleteTextView) findViewById(R.id.autoCompleteTextViewTo);
+       actvv = (AutoCompleteTextView) findViewById(R.id.autoCompleteTextViewTo);
         actvv.setThreshold(1);//will start working from first character
         actvv.setAdapter(adapter_new);//setting the adapter data into the AutoCompleteTextView
         actvv.setTextColor(Color.BLACK);
 
-
     }
-
 
     public class ClickableTextView extends android.support.v7.widget.AppCompatTextView implements View.OnTouchListener {
         public ClickableTextView(Context context, AttributeSet attrs,
