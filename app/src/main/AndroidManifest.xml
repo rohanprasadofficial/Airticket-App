@@ -11,7 +11,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".DeleteAirport"></activity>
+        <activity android:name=".DeleteAirport"
+            android:theme="@style/AppTheme.NoActionBar"
+            ></activity>
         <activity
             android:name=".DeleteFlight"
             android:theme="@style/AppTheme.NoActionBar" />
@@ -26,11 +28,7 @@
         <activity
             android:name=".AdminDashboard"
             android:theme="@style/AppTheme.NoActionBar">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name=".RegisterAdmin"
@@ -41,6 +39,7 @@
         <activity
             android:name=".LoginAdmin"
             android:theme="@style/AppTheme.NoActionBar" />
+
         <activity
             android:name=".Register"
             android:theme="@style/AppTheme.NoActionBar" />
@@ -52,7 +51,15 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".MainActivity"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/AppTheme.NoActionBar" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+
+
+        </activity>
         <activity
             android:name=".TicketActivity"
             android:theme="@style/AppTheme.NoActionBar" />

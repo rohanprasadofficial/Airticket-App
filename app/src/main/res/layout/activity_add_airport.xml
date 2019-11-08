@@ -45,7 +45,6 @@
             app:cardBackgroundColor="@android:color/white"
             app:cardCornerRadius="5dp">
 
-
             <EditText
                 android:id="@+id/edt_name"
                 android:layout_width="match_parent"

@@ -55,7 +55,6 @@ public interface APIInterface {
     @HTTP(method = "DELETE", path = "flight/deleteairport", hasBody = true)
     Call<Response> deleteAirport(@Header("Authorization") String token, @Body DeleteAirport deleteFlight);
 
-
     @GET("flight/getallairports")
     Call<com.logarithm.airticket.flightticketbook.ModelClass.DeleteAirport.DeleteAirport> getAllAirports(@Header("Authorization") String token);
 

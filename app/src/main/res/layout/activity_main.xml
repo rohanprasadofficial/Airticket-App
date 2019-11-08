@@ -28,10 +28,11 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
             android:orientation="vertical"
             android:paddingBottom="28dp">
 
-            <include layout="@layout/toolbar_main" />
+            <!--<include layout="@layout/toolbar_main" />-->
 
 
             <customfonts.MyTextView_Roboto_Bold
@@ -40,8 +41,8 @@
                 android:layout_marginLeft="18dp"
                 android:text="Book your flight"
                 android:textColor="#000"
-                android:textStyle="bold"
-                android:textSize="40dp" />
+                android:textSize="40dp"
+                android:textStyle="bold" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -62,7 +63,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="Round Trip"
+                        android:text="Add Trip"
                         android:textColor="@color/textcolor"
                         android:textSize="28dp" />
 
@@ -75,32 +76,32 @@
                         android:orientation="vertical" />
                 </LinearLayout>
 
-                <LinearLayout
-                    android:id="@+id/linear2"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:orientation="vertical">
+                <!--<LinearLayout-->
+                    <!--android:id="@+id/linear2"-->
+                    <!--android:layout_width="0dp"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_weight="1"-->
+                    <!--android:orientation="vertical">-->
 
-                    <customfonts.MyTextView_Lato_Medium
-                        android:id="@+id/text_oneway"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="One Way"
-                        android:textColor="#837a7a"
-                        android:textSize="28dp" />
+                    <!--<customfonts.MyTextView_Lato_Medium-->
+                        <!--android:id="@+id/text_oneway"-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:layout_weight="1"-->
+                        <!--android:text="One Way"-->
+                        <!--android:textColor="#837a7a"-->
+                        <!--android:textSize="28dp" />-->
 
-                    <LinearLayout
-                        android:id="@+id/line22"
-                        android:orientation="vertical"
-                        android:visibility="invisible"
-                        android:layout_marginLeft="4dp"
-                        android:layout_width="65dp"
-                        android:layout_height="2dp"
-                        android:background="#000" />
+                    <!--<LinearLayout-->
+                        <!--android:id="@+id/line22"-->
+                        <!--android:orientation="vertical"-->
+                        <!--android:visibility="invisible"-->
+                        <!--android:layout_marginLeft="4dp"-->
+                        <!--android:layout_width="65dp"-->
+                        <!--android:layout_height="2dp"-->
+                        <!--android:background="#000" />-->
 
-                </LinearLayout>
+                <!--</LinearLayout>-->
 
             </LinearLayout>
 
@@ -225,32 +226,32 @@
                 android:text=""
                 android:theme="@style/MineCustomTabText" />
 
-            <View
-                android:layout_width="130dp"
-                android:layout_height="1.5dp"
-                android:layout_marginBottom="15dp"
-                android:layout_marginLeft="30dp"
-                android:background="#edecf2" />
+            <!--<View-->
+                <!--android:layout_width="130dp"-->
+                <!--android:layout_height="1.5dp"-->
+                <!--android:layout_marginBottom="15dp"-->
+                <!--android:layout_marginLeft="30dp"-->
+                <!--android:background="#edecf2" />-->
 
-            <customfonts.MyTextView_Roboto_Regular
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="9dp"
-                android:layout_marginLeft="32dp"
-                android:text="Return" />
+            <!--<customfonts.MyTextView_Roboto_Regular-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_marginBottom="9dp"-->
+                <!--android:layout_marginLeft="32dp"-->
+                <!--android:text="Return" />-->
 
-            <customfonts.EditText_Roboto_Regular
-                android:id="@+id/txtdata2"
-                android:layout_width="150dp"
-                android:clickable="true"
-                android:editable="false"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="20dp"
-                android:theme="@style/MineCustomTabText"
-                android:background="@android:color/transparent"
-                android:paddingLeft="31dp"
-                android:text=""
-                tools:ignore="DuplicateIds" />
+            <!--<customfonts.EditText_Roboto_Regular-->
+                <!--android:id="@+id/txtdata2"-->
+                <!--android:layout_width="150dp"-->
+                <!--android:clickable="true"-->
+                <!--android:editable="false"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_marginBottom="20dp"-->
+                <!--android:theme="@style/MineCustomTabText"-->
+                <!--android:background="@android:color/transparent"-->
+                <!--android:paddingLeft="31dp"-->
+                <!--android:text=""-->
+                <!--tools:ignore="DuplicateIds" />-->
 
             <View
                 android:layout_width="130dp"
