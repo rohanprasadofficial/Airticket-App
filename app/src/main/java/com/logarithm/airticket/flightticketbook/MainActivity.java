@@ -43,9 +43,7 @@ import static com.logarithm.airticket.flightticketbook.LoginAdmin.TOKEN_ID_ADMIN
 
 public class MainActivity extends AppCompatActivity {
 
-
-
-    String[] fruits ={"Paris CDG", "Karachi DGD", "India CDG", "USA CDG", "France CDG", "Russia CDG", "Iran CDG", "London CDG"};
+    ArrayList<String> fruits;
 
     public AlertDialog alertDialog = null;
     public static String TOKEN="Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiYWlydGlja2V0LWRldiIsImlkIjoiNWRiYTZlMGU2ZTM1N2U0OGVkM2JjODUzIiwiZW1haWwiOiJhaXJ0aWNrZXRkZXZAZ21haWwuY29tIiwicGFzc3dvcmQiOiIkMmEkMTAkRzBmMVVSWVFyMUE4cUNsNy44ZXpCdVdwbDdnNkpRd0dxc011N0dsQTBXOC8zRG5nYm51UEciLCJwcm9maWxlcGljIjoiaHR0cHM6Ly9lZGxpZmUuZWR1Lm12L3dwLWNvbnRlbnQvdXBsb2Fkcy8yMDE3LzA1LzIwMTYxMDE0XzU4MDA2YmZkNzZkY2YucG5nIiwiaWF0IjoxNTczMDQ2NTQ5fQ.uKcra8Ydm23HcG9PnfJLhl8I3uuS3hglhJ7ALmTZrrY";
@@ -60,15 +58,6 @@ public class MainActivity extends AppCompatActivity {
     Calendar myCalendar2 = Calendar.getInstance();
 
 
-
-
-
-
-
-
-
-
-
     Spinner spinner;
 
     @Override
@@ -78,7 +67,7 @@ public class MainActivity extends AppCompatActivity {
         Spinner spinner = (Spinner) findViewById(R.id.spinnerPassengers);
 
 
-
+        fruits=new ArrayList<>();
 
 
 
@@ -122,8 +111,6 @@ public class MainActivity extends AppCompatActivity {
 //        edittext2 = (EditText) findViewById(R.id.txtdata2);
 
 
-
-
         try {
             alertDialog = new SpotsDialog.Builder().setContext(MainActivity.this).setTheme(R.style.Custom).build();
             alertDialog.setMessage("Getting Airports info..");
@@ -138,8 +125,17 @@ public class MainActivity extends AppCompatActivity {
                         alertDialog.dismiss();
                         Log.i("JSON", response.body().getSuccess().toString());
                         if (response.body().getSuccess()) {
+
+                            for(int i=0;i<response.body().getMessage().size();i++)
+                            {
+                                fruits.add(response.body().getMessage().get(i).getName());
+
+                            }
+
+
                             alertDialog.dismiss();
-                            Toast.makeText(MainActivity.this, response.body().getMessage().get(0).getName(), Toast.LENGTH_SHORT).show();
+
+
 
                         } else {
                             Log.i("TEST", response.body().getMessage().toString());
@@ -163,40 +159,6 @@ public class MainActivity extends AppCompatActivity {
             e.printStackTrace();
             Toast.makeText(this, "Something went wrong", Toast.LENGTH_SHORT).show();
         }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
         linear1.setOnClickListener(new View.OnClickListener() {
             @Override
