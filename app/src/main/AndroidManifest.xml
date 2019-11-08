@@ -11,8 +11,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".DeleteFlight"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity android:name=".DeleteAirport"></activity>
+        <activity
+            android:name=".DeleteFlight"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".AddAirport"
             android:theme="@style/AppTheme.NoActionBar">
@@ -20,8 +22,7 @@
         </activity>
         <activity
             android:name=".AddFlight"
-            android:theme="@style/AppTheme.NoActionBar"
-            ></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".AdminDashboard"
             android:theme="@style/AppTheme.NoActionBar">

@@ -8,6 +8,7 @@ import com.logarithm.airticket.flightticketbook.ModelClass.Response;
 import com.logarithm.airticket.flightticketbook.ParametersClass.AddAirport;
 import com.logarithm.airticket.flightticketbook.ParametersClass.AddFlight;
 import com.logarithm.airticket.flightticketbook.ParametersClass.Credentials;
+import com.logarithm.airticket.flightticketbook.ParametersClass.DeleteAirport;
 import com.logarithm.airticket.flightticketbook.ParametersClass.Register;
 
 import org.json.JSONObject;
@@ -51,8 +52,12 @@ public interface APIInterface {
     Call<Response> deleteFlight(@Header("Authorization") String token, @Body com.logarithm.airticket.flightticketbook.ParametersClass.DeleteFlight deleteFlight);
 
 
+    @HTTP(method = "DELETE", path = "flight/deleteairport", hasBody = true)
+    Call<Response> deleteAirport(@Header("Authorization") String token, @Body DeleteAirport deleteFlight);
 
 
+    @GET("flight/getallairports")
+    Call<com.logarithm.airticket.flightticketbook.ModelClass.DeleteAirport.DeleteAirport> getAllAirports(@Header("Authorization") String token);
 
 
 
