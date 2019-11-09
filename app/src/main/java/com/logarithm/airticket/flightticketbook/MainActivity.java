@@ -251,15 +251,10 @@ public class MainActivity extends AppCompatActivity {
 
     ArrayList<ItemData_Cusine> list = new ArrayList<>();
 
-
-
-
-
     // get the selected dropdown list value
     public void addListenerOnButton() {
 //        spinner1 = (Spinner) findViewById(R.id.spinnerPassengers);
         spinner2 = (Spinner) findViewById(R.id.spinnerClass);
-
 
         img = (ImageView) findViewById(R.id.btn1);
         img.setOnClickListener(new View.OnClickListener() {
@@ -268,11 +263,15 @@ public class MainActivity extends AppCompatActivity {
 
                 Log.i("FROM",actv.getText().toString());
                 Log.i("TO",actvv.getText().toString());
-                 Log.i("DATE",edittext.getText().toString());
+                Log.i("DATE",edittext.getText().toString());
                 Log.i("CLASS",spinner2.getSelectedItem().toString());
 
-                Intent intent = new Intent(MainActivity.this, FlightListActivity.class);
 
+                Intent intent = new Intent(MainActivity.this, FlightListActivity.class);
+                intent.putExtra("FROM",actv.getText().toString());
+                intent.putExtra("TO",actv.getText().toString());
+                intent.putExtra("DATE",actv.getText().toString());
+                intent.putExtra("CLASS",actv.getText().toString());
                 startActivity(intent);
             }
         });
