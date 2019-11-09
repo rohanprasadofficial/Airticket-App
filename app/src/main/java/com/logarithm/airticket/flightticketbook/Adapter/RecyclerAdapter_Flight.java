@@ -114,7 +114,6 @@ public class RecyclerAdapter_Flight extends RecyclerView.Adapter<RecyclerAdapter
 
                 intent.putExtra("Flight",moviesList.get(position));
 
-
                 mContext.startActivity(intent);
 
             }

@@ -34,6 +34,7 @@ public class PassengerDetail extends AppCompatActivity {
         book=findViewById(R.id.btn_book);
         flight= (RecyclerMessage)getIntent().getSerializableExtra("Flight");
 
+        Toast.makeText(this, flight.getName(), Toast.LENGTH_SHORT).show();
         email.setText(EMAIL);
         Tclass.setText(CLASS);
         date.setText(DATE);
@@ -75,7 +76,7 @@ public class PassengerDetail extends AppCompatActivity {
                     Intent intent=new Intent(getApplicationContext(),TicketActivity.class);
                     intent.putExtra("Flight",flight);
                     NAME=name.getText().toString();
-                    startActivity(new Intent(getApplicationContext(), TicketActivity.class));
+                    startActivity(intent);
                 }
             }
         });

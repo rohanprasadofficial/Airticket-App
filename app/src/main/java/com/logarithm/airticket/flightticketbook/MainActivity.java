@@ -293,7 +293,7 @@ public class MainActivity extends AppCompatActivity {
                 (this, android.R.layout.select_dialog_item, fruits);
 
         //Getting the instance of AutoCompleteTextView
-       actvv = (AutoCompleteTextView) findViewById(R.id.autoCompleteTextViewTo);
+        actvv = (AutoCompleteTextView) findViewById(R.id.autoCompleteTextViewTo);
         actvv.setThreshold(1);//will start working from first character
         actvv.setAdapter(adapter_new);//setting the adapter data into the AutoCompleteTextView
         actvv.setTextColor(Color.BLACK);
