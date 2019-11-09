@@ -23,7 +23,7 @@ import static com.logarithm.airticket.flightticketbook.LoginAdmin.TOKEN_ID_ADMIN
 public class AddFlight extends AppCompatActivity {
 
 
-    TextView name,flightNo,flightID;
+    TextView name,flightNo,flightID,source,dest,sourceDate,destDate,sourceTime,destTime,FPrice,BPrice,PPrice,EPrice;
     Button addFlight;
     AlertDialog alertDialog;
     @Override
@@ -35,6 +35,16 @@ public class AddFlight extends AppCompatActivity {
         name=findViewById(R.id.edt_name);
         flightNo=findViewById(R.id.edt_flightNumber);
         flightID=findViewById(R.id.edt_flightID);
+        source=findViewById(R.id.Source);
+        dest=findViewById(R.id.Destination);
+        sourceDate=findViewById(R.id.sourceDate);
+        sourceTime=findViewById(R.id.sourceTime);
+        destDate=findViewById(R.id.DestDate);
+        destTime=findViewById(R.id.destTime);
+        FPrice=findViewById(R.id.FclassPrice);
+        BPrice=findViewById(R.id.BclassPrice);
+        PPrice=findViewById(R.id.PclassPrice);
+        EPrice=findViewById(R.id.EclassPrice);
         addFlight=findViewById(R.id.btn_add);
 
 
@@ -44,9 +54,9 @@ public class AddFlight extends AppCompatActivity {
                 alertDialog = new SpotsDialog.Builder().setContext(AddFlight.this).setTheme(R.style.Custom).build();
                 alertDialog.setMessage("Adding Flight... ");
                 alertDialog.show();
-                if (flightID.getText().length() > 0 && flightNo.getText().length() > 0 && flightID.length() >0 )  {
+                if (flightID.getText().length() > 0 && flightNo.getText().length() > 0 && flightID.length() >0 && source.length() >0  && dest.length() >0  && sourceDate.length() >0  && sourceTime.length() >0  && destDate.length() >0  && destTime.length() >0  && FPrice.length() >0  && PPrice.length() >0  && BPrice.length() >0  && EPrice.length() >0  )  {
                     //   Credentials credentials=new Credentials(editTextUserId.getText().toString(),editTextPassword.getText().toString());
-                    com.logarithm.airticket.flightticketbook.ParametersClass.AddFlight credentials = new com.logarithm.airticket.flightticketbook.ParametersClass.AddFlight(name.getText().toString(),flightNo.getText().toString(),flightID.getText().toString());
+                    com.logarithm.airticket.flightticketbook.ParametersClass.AddFlight credentials = new com.logarithm.airticket.flightticketbook.ParametersClass.AddFlight(name.getText().toString(),flightNo.getText().toString(),flightID.getText().toString(),source.getText().toString(),dest.getText().toString(),sourceTime.getText().toString(),destTime.getText().toString(),sourceDate.getText().toString(),destDate.getText().toString(),FPrice.getText().toString(),BPrice.getText().toString(),PPrice.getText().toString(),EPrice.getText().toString());
                     final APIInterface apiService = APIClient.getClient().create(APIInterface.class);
                     Call<com.logarithm.airticket.flightticketbook.ModelClass.Response> call2 = apiService.addFlight(TOKEN_ID_ADMIN,credentials);
                     call2.enqueue(new Callback<com.logarithm.airticket.flightticketbook.ModelClass.Response>() {

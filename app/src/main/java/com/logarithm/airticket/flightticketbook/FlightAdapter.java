@@ -38,7 +38,6 @@ public class FlightAdapter extends RecyclerView.Adapter<FlightAdapter.MyViewHold
         holder.flightnumber.setText(tripList.get(position).getFlightNumber());
         // implement setOnClickListener event on item view.
     }
-
     @Override
     public int getItemCount() {
         return tripList.size();
