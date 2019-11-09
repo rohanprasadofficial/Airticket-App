@@ -17,6 +17,7 @@ import com.logarithm.airticket.flightticketbook.ConfirmTicketActivity;
 import com.logarithm.airticket.flightticketbook.ModelClass.DeleteFlight.Message;
 import com.logarithm.airticket.flightticketbook.ModelClass.Flight;
 import com.logarithm.airticket.flightticketbook.ModelClass.RecyclerMessage;
+import com.logarithm.airticket.flightticketbook.PassengerDetail;
 import com.logarithm.airticket.flightticketbook.R;
 
 import java.util.List;
@@ -109,7 +110,7 @@ public class RecyclerAdapter_Flight extends RecyclerView.Adapter<RecyclerAdapter
         holder.btnBuy.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(mContext, ConfirmTicketActivity.class);
+                Intent intent = new Intent(mContext, PassengerDetail.class);
 
                 intent.putExtra("Flight",moviesList.get(position));
 

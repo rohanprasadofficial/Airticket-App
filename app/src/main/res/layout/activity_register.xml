@@ -70,7 +70,7 @@
             app:cardCornerRadius="5dp">
 
             <EditText
-                android:id="@+id/edt_username"
+                android:id="@+id/edt_email"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="#4A484A"
@@ -130,7 +130,7 @@
                 app:cardCornerRadius="10dp">
 
                 <Button
-                    android:id="@+id/btn_login"
+                    android:id="@+id/btn_book"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_gravity="center"

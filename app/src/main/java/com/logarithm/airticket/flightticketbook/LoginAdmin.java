@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.logarithm.airticket.flightticketbook.ModelClass.Profile.Profile;
 import com.logarithm.airticket.flightticketbook.ParametersClass.Credentials;
 import com.logarithm.airticket.flightticketbook.RestAPI.APIClient;
 import com.logarithm.airticket.flightticketbook.RestAPI.APIInterface;
@@ -19,6 +20,8 @@ import dmax.dialog.SpotsDialog;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+
+import static com.logarithm.airticket.flightticketbook.Login.TOKEN_ID;
 
 
 public class LoginAdmin extends AppCompatActivity {
@@ -32,9 +35,9 @@ public class LoginAdmin extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        edt_username=findViewById(R.id.edt_username);
+        edt_username=findViewById(R.id.edt_email);
         edt_pass=findViewById(R.id.edt_pass);
-        btn_login=findViewById(R.id.btn_login);
+        btn_login=findViewById(R.id.btn_book);
         register=findViewById(R.id.registerView);
         Log.i("ACT ","LOGIN ADMIN");
 
@@ -66,6 +69,45 @@ public class LoginAdmin extends AppCompatActivity {
                                 alertDialog.dismiss();
                                 if (response.body().getSuccess()) {
                                     TOKEN_ID_ADMIN=response.body().getToken();
+
+
+                                    alertDialog = new SpotsDialog.Builder().setContext(LoginAdmin.this).setTheme(R.style.Custom).build();
+                                    alertDialog.setMessage("Getting Profile... ");
+                                    alertDialog.show();
+
+                                    final APIInterface apiService1 = APIClient.getClient().create(APIInterface.class);
+                                    Call<Profile> call3 = apiService1.getProfile(TOKEN_ID_ADMIN);
+                                    call3.enqueue(new Callback<Profile>() {
+                                        @Override
+                                        public void onResponse(Call<Profile> call, Response<Profile> response) {
+                                            try {
+
+                                                alertDialog.dismiss();
+                                                Login.EMAIL=response.body().getEmail();
+
+
+                                                startActivity(new Intent(getApplicationContext(),MainActivity.class));
+                                                finish();
+
+                                                //   alertDialog.dismiss();
+
+                                            } catch (Exception e) {
+                                                alertDialog.dismiss();
+                                                Toast.makeText(LoginAdmin.this, "Something Went Wrong", Toast.LENGTH_SHORT).show();
+                                                e.printStackTrace();
+//                                            alertDialog.dismiss();
+
+                                            }
+                                        }
+
+                                        @Override
+                                        public void onFailure(Call<Profile> call, Throwable t) {
+                                            Toast.makeText(LoginAdmin.this, "Something Went Wrong", Toast.LENGTH_SHORT).show();
+
+                                            alertDialog.dismiss();
+
+                                        }
+                                    });
                                     startActivity(new Intent(getApplicationContext(),MainActivity.class));
                                     finish();
                                 } else {

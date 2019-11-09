@@ -4,6 +4,7 @@ package com.logarithm.airticket.flightticketbook.RestAPI;
 
 import com.logarithm.airticket.flightticketbook.ModelClass.DeleteFlight.DeleteFlight;
 import com.logarithm.airticket.flightticketbook.ModelClass.Login;
+import com.logarithm.airticket.flightticketbook.ModelClass.Profile.Profile;
 import com.logarithm.airticket.flightticketbook.ModelClass.RecyclerGet;
 import com.logarithm.airticket.flightticketbook.ModelClass.RecyclerMessage;
 import com.logarithm.airticket.flightticketbook.ModelClass.Response;
@@ -64,6 +65,10 @@ public interface APIInterface {
 
     @GET("flight/getallairports")
     Call<com.logarithm.airticket.flightticketbook.ModelClass.DeleteAirport.DeleteAirport> getAllAirports(@Header("Authorization") String token);
+
+    @GET("auth/profile")
+    Call<Profile> getProfile(@Header("Authorization") String token);
+
 
 
 

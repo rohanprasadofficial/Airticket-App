@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.logarithm.airticket.flightticketbook.ModelClass.Profile.Profile;
 import com.logarithm.airticket.flightticketbook.ParametersClass.Credentials;
 import com.logarithm.airticket.flightticketbook.RestAPI.APIClient;
 import com.logarithm.airticket.flightticketbook.RestAPI.APIInterface;
@@ -27,14 +28,15 @@ public class Login extends AppCompatActivity {
     public static String  TOKEN_ID=null;
     TextView edt_username,edt_pass,register;
     Button btn_login;
+    public static  String EMAIL;
     AlertDialog alertDialog;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        edt_username=findViewById(R.id.edt_username);
+        edt_username=findViewById(R.id.edt_email);
         edt_pass=findViewById(R.id.edt_pass);
-        btn_login=findViewById(R.id.btn_login);
+        btn_login=findViewById(R.id.btn_book);
         register=findViewById(R.id.registerView);
         Log.i("ACT ","LOGIN");
 
@@ -67,8 +69,45 @@ public class Login extends AppCompatActivity {
                                 alertDialog.dismiss();
                                 if (response.body().getSuccess()) {
                                         TOKEN_ID=response.body().getToken();
-                                        startActivity(new Intent(getApplicationContext(),MainActivity.class));
-                                        finish();
+
+                                    alertDialog = new SpotsDialog.Builder().setContext(Login.this).setTheme(R.style.Custom).build();
+                                    alertDialog.setMessage("Getting Profile... ");
+                                    alertDialog.show();
+
+                                    final APIInterface apiService1 = APIClient.getClient().create(APIInterface.class);
+                                    Call<Profile> call3 = apiService1.getProfile(TOKEN_ID);
+                                    call3.enqueue(new Callback<Profile>() {
+                                        @Override
+                                        public void onResponse(Call<Profile> call, Response<Profile> response) {
+                                            try {
+
+                                                alertDialog.dismiss();
+                                                    EMAIL=response.body().getEmail();
+
+
+                                                    startActivity(new Intent(getApplicationContext(),MainActivity.class));
+                                                    finish();
+
+                                                //   alertDialog.dismiss();
+
+                                            } catch (Exception e) {
+                                                alertDialog.dismiss();
+                                                Toast.makeText(Login.this, "Something Went Wrong", Toast.LENGTH_SHORT).show();
+                                                e.printStackTrace();
+//                            alertDialog.dismiss();
+
+                                            }
+                                        }
+
+                                        @Override
+                                        public void onFailure(Call<Profile> call, Throwable t) {
+                                            Toast.makeText(Login.this, "Something Went Wrong", Toast.LENGTH_SHORT).show();
+
+                                            alertDialog.dismiss();
+
+                                        }
+                                    });
+
                                 } else {
                                     Toast.makeText(Login.this,"Invalid Credentials !", Toast.LENGTH_SHORT).show();
                                 }

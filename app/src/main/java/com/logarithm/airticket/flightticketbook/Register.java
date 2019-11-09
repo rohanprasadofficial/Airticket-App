@@ -10,7 +10,6 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.logarithm.airticket.flightticketbook.ParametersClass.Credentials;
 import com.logarithm.airticket.flightticketbook.RestAPI.APIClient;
 import com.logarithm.airticket.flightticketbook.RestAPI.APIInterface;
 
@@ -30,10 +29,10 @@ public class Register extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
-        edt_username=findViewById(R.id.edt_username);
+        edt_username=findViewById(R.id.edt_email);
         edt_name=findViewById(R.id.edt_name);
         edt_pass=findViewById(R.id.edt_pass);
-        btn_login=findViewById(R.id.btn_login);
+        btn_login=findViewById(R.id.btn_book);
 
         Log.i("ACT ","REGISTER");
 
