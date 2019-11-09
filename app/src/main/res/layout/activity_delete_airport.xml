@@ -15,7 +15,8 @@
         android:layout_marginBottom="15dp"
         android:fontFamily="@font/montserrat"
         android:paddingStart="31dp"
-        android:text="Click on the flight to delete it"
+        android:gravity="center"
+        android:text="Click on the Airport to delete it"
         android:textColor="#000"
         android:textSize="15sp" />
     <android.support.v7.widget.RecyclerView
