@@ -1,17 +1,17 @@
-package com.logarithm.airticket.flightticketbook.ModelClass.DeleteFlight;
+package com.logarithm.airticket.flightticketbook.ModelClass;
 
 import java.util.List;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class DeleteFlight {
+public class RecyclerGet {
 
     @SerializedName("success")
     @Expose
     private Boolean success;
     @SerializedName("message")
     @Expose
-    private List<Message> message = null;
+    private List<RecyclerMessage> message = null;
 
     public Boolean getSuccess() {
         return success;
@@ -21,11 +21,12 @@ public class DeleteFlight {
         this.success = success;
     }
 
-    public List<Message> getMessage() {
+    public List<RecyclerMessage> getMessage() {
         return message;
     }
 
-    public void setMessage(List<Message> message) {
+
+    public void setMessage(List<RecyclerMessage> message) {
         this.message = message;
     }
 

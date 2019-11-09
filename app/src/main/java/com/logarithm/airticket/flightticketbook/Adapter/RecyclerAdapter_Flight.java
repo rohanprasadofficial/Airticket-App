@@ -14,7 +14,9 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.logarithm.airticket.flightticketbook.ConfirmTicketActivity;
+import com.logarithm.airticket.flightticketbook.ModelClass.DeleteFlight.Message;
 import com.logarithm.airticket.flightticketbook.ModelClass.Flight;
+import com.logarithm.airticket.flightticketbook.ModelClass.RecyclerMessage;
 import com.logarithm.airticket.flightticketbook.R;
 
 import java.util.List;
@@ -30,7 +32,8 @@ public class RecyclerAdapter_Flight extends RecyclerView.Adapter<RecyclerAdapter
 
     boolean showingFirst = true;
 
-    private List<Flight> moviesList;
+
+    private List<RecyclerMessage> moviesList;
     Context mContext;
 
     ImageView NormalImageView;
@@ -46,7 +49,7 @@ public class RecyclerAdapter_Flight extends RecyclerView.Adapter<RecyclerAdapter
         ImageView imgPlane;
         TextView txtFlightName,txtCountry,txtStationArrived,txtCountryDestination,txtStationDestination,btnBuy;
         LinearLayout linear;
-
+        TextView txtTimeArrived,txtTimeDestination,txtDateArrived,txtDateDestination;
 
         public MyViewHolder(View view) {
             super(view);
@@ -60,7 +63,10 @@ public class RecyclerAdapter_Flight extends RecyclerView.Adapter<RecyclerAdapter
             txtStationDestination = itemView.findViewById(R.id.txtStationDestination);
             btnBuy = itemView.findViewById(R.id.btnBuy);
             imgPlane = itemView.findViewById(R.id.imgPlane);
-
+            txtTimeArrived =itemView.findViewById(R.id.txtTimeArrived);
+            txtTimeDestination =itemView.findViewById(R.id.txtTimeDestination);
+            txtDateArrived =itemView.findViewById(R.id.txtDateArrived);
+            txtDateDestination =itemView.findViewById(R.id.txtDateDestination);
 
         }
 
@@ -68,7 +74,7 @@ public class RecyclerAdapter_Flight extends RecyclerView.Adapter<RecyclerAdapter
 
 
 
-    public RecyclerAdapter_Flight(Context mContext, List<Flight> moviesList) {
+    public RecyclerAdapter_Flight(Context mContext, List<RecyclerMessage> moviesList) {
         this.moviesList = moviesList;
         this.mContext = mContext;
     }
@@ -90,14 +96,20 @@ public class RecyclerAdapter_Flight extends RecyclerView.Adapter<RecyclerAdapter
     public void onBindViewHolder(final MyViewHolder holder, int position)
     {
 
-        Flight movie = moviesList.get(position);
-        holder.txtFlightName.setText(movie.getTxtFlightName());
-        holder.txtCountry.setText(movie.getTxtCountry());
-        holder.txtStationArrived.setText(movie.getTxtStationArrived());
-        holder.txtCountryDestination.setText(movie.getTxtCountryDestination());
-        holder.txtStationDestination.setText(movie.getTxtStationDestination());
-        holder.btnBuy.setText(movie.getBtnBuy());
-        holder.imgPlane.setImageResource(movie.getImgPlane());
+        RecyclerMessage movie = moviesList.get(position);
+        holder.txtFlightName.setText(movie.getName());
+        holder.txtCountry.setText(movie.getSource());
+        holder.txtStationArrived.setText(movie.getDestination());
+        holder.txtCountryDestination.setText(movie.getDestination());
+        holder.txtStationDestination.setText(movie.getDestination());
+        holder.btnBuy.setText("Book this Trip");
+        holder.imgPlane.setImageResource(R.drawable.ic_blackplane);
+        holder.txtDateArrived.setText(movie.getSourceDate());
+        holder.txtDateDestination.setText(movie.getDestDate());
+        holder.txtTimeArrived.setText(movie.getSourceTime());
+        holder.txtTimeDestination.setText(movie.getDestTime());
+
+
         holder.btnBuy.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

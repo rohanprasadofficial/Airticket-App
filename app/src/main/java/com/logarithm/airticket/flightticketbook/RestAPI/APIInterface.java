@@ -4,11 +4,14 @@ package com.logarithm.airticket.flightticketbook.RestAPI;
 
 import com.logarithm.airticket.flightticketbook.ModelClass.DeleteFlight.DeleteFlight;
 import com.logarithm.airticket.flightticketbook.ModelClass.Login;
+import com.logarithm.airticket.flightticketbook.ModelClass.RecyclerGet;
+import com.logarithm.airticket.flightticketbook.ModelClass.RecyclerMessage;
 import com.logarithm.airticket.flightticketbook.ModelClass.Response;
 import com.logarithm.airticket.flightticketbook.ParametersClass.AddAirport;
 import com.logarithm.airticket.flightticketbook.ParametersClass.AddFlight;
 import com.logarithm.airticket.flightticketbook.ParametersClass.Credentials;
 import com.logarithm.airticket.flightticketbook.ParametersClass.DeleteAirport;
+import com.logarithm.airticket.flightticketbook.ParametersClass.GetSpecFlight;
 import com.logarithm.airticket.flightticketbook.ParametersClass.Register;
 
 import org.json.JSONObject;
@@ -46,6 +49,10 @@ public interface APIInterface {
 
     @GET("flight/getallflights")
     Call<DeleteFlight> getAllflights(@Header("Authorization") String token);
+
+
+    @POST("flight/getallspecflights")
+    Call<RecyclerGet> getAllSpecflights(@Header("Authorization") String token, @Body  GetSpecFlight getSpecFlight);
 
 
     @HTTP(method = "DELETE", path = "flight/deleteflight", hasBody = true)

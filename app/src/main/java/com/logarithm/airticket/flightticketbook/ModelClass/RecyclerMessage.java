@@ -1,9 +1,9 @@
-package com.logarithm.airticket.flightticketbook.ModelClass.DeleteFlight;
+package com.logarithm.airticket.flightticketbook.ModelClass;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class Message {
+public class RecyclerMessage {
 
     @SerializedName("_id")
     @Expose
@@ -53,6 +53,8 @@ public class Message {
     @SerializedName("__v")
     @Expose
     private Integer v;
+
+
 
     public String getId() {
         return id;

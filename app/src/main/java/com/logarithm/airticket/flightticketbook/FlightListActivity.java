@@ -13,6 +13,9 @@ import android.widget.Toast;
 import com.logarithm.airticket.flightticketbook.Adapter.RecyclerAdapter_Flight;
 import com.logarithm.airticket.flightticketbook.ModelClass.DeleteFlight.Message;
 import com.logarithm.airticket.flightticketbook.ModelClass.Flight;
+import com.logarithm.airticket.flightticketbook.ModelClass.RecyclerGet;
+import com.logarithm.airticket.flightticketbook.ModelClass.RecyclerMessage;
+import com.logarithm.airticket.flightticketbook.ParametersClass.GetSpecFlight;
 import com.logarithm.airticket.flightticketbook.RestAPI.APIClient;
 import com.logarithm.airticket.flightticketbook.RestAPI.APIInterface;
 
@@ -38,7 +41,7 @@ public class FlightListActivity extends AppCompatActivity {
 
     public String Source,Destination;
     public AlertDialog alertDialog = null;
-    List<Message> tripList;
+    List<RecyclerMessage> tripList;
 
 
     private String txtFlightName  []= {"AIRFRANCE ","Emirates","AIRFRANCE"};
@@ -49,30 +52,27 @@ public class FlightListActivity extends AppCompatActivity {
     private String txtStationDestination []={"JFK","JFK","JFK"};
     private String btnBuy []={"Buy","Buy","Buy"};
 
-
-    private ArrayList<Flight> flights;
-
+    private ArrayList<RecyclerMessage> flights;
     private RecyclerView recyclerView;
     private RecyclerAdapter_Flight mAdapter;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.flight_list_view);
         Source=getIntent().getStringExtra("FROM");
         Destination=getIntent().getStringExtra("TO");
-
         try {
             // call the constructor of CustomAdapter to send the reference and data to Adapter
             alertDialog = new SpotsDialog.Builder().setContext(FlightListActivity.this).setTheme(R.style.Custom).build();
             alertDialog.setMessage("Getting flights info..");
             alertDialog.show();
             final APIInterface apiService = APIClient.getClient().create(APIInterface.class);
-            Call<com.logarithm.airticket.flightticketbook.ModelClass.DeleteFlight.DeleteFlight> call2 = apiService.getAllflights(TOKEN_ID_ADMIN);
-            call2.enqueue(new Callback<com.logarithm.airticket.flightticketbook.ModelClass.DeleteFlight.DeleteFlight>() {
+            GetSpecFlight getSpecFlight=new GetSpecFlight(Source,Destination);
+            Call<RecyclerGet> call2 = apiService.getAllSpecflights(TOKEN_ID_ADMIN,getSpecFlight);
+            call2.enqueue(new Callback<RecyclerGet>() {
                 @Override
 
-                public void onResponse(Call<com.logarithm.airticket.flightticketbook.ModelClass.DeleteFlight.DeleteFlight> call, Response<com.logarithm.airticket.flightticketbook.ModelClass.DeleteFlight.DeleteFlight> response) {
+                public void onResponse(Call<RecyclerGet> call, Response<RecyclerGet> response) {
                     try {
                         alertDialog.dismiss();
                         Log.i("JSON", response.body().getSuccess().toString());
@@ -84,6 +84,25 @@ public class FlightListActivity extends AppCompatActivity {
                             }
                             else{
                                 Toast.makeText(FlightListActivity.this, tripList.get(0).getName(), Toast.LENGTH_SHORT).show();
+
+
+
+
+                                flights = new ArrayList<>();
+                                recyclerView=(RecyclerView)findViewById(R.id.recyclerview);
+
+                                for (int i = 0; i < tripList.size(); i++) {
+//                                    RecyclerMessage beanClassForRecyclerView_contacts = new RecyclerMessage(tripList.get(i).getName(),tripList.get(i).getSource(),tripList.get(i).getSource(),imgPlane[i],
+//                                            tripList.get(i).getDestination(), tripList.get(i).getDestination(),btnBuy[i]);
+                                    flights.add(tripList.get(i));
+                                }
+
+                                mAdapter = new RecyclerAdapter_Flight(FlightListActivity.this,flights);
+
+                                RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(FlightListActivity.this);
+                                recyclerView.setLayoutManager(mLayoutManager);
+                                recyclerView.setAdapter(mAdapter);
+
                             }
 
 
@@ -92,16 +111,16 @@ public class FlightListActivity extends AppCompatActivity {
                         }
                     } catch (Exception e) {
                         alertDialog.dismiss();
-                        Toast.makeText(FlightListActivity.this, "Something Went Wrong", Toast.LENGTH_SHORT).show();
-                        e.printStackTrace();
+                        Toast.makeText(FlightListActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
 
                     }
                 }
-
                 @Override
-                public void onFailure(Call<com.logarithm.airticket.flightticketbook.ModelClass.DeleteFlight.DeleteFlight> call, Throwable t) {
+                public void onFailure(Call<RecyclerGet> call, Throwable t) {
                     alertDialog.dismiss();
-                    Toast.makeText(FlightListActivity.this, "Something Went Wrong", Toast.LENGTH_SHORT).show();
+                    t.printStackTrace();
+                    Toast.makeText(FlightListActivity.this, t.getMessage(), Toast.LENGTH_SHORT).show();
+         //           Toast.makeText(FlightListActivity.this, "Something Went Wrong", Toast.LENGTH_SHORT).show();
                 }
             });
 
@@ -112,23 +131,6 @@ public class FlightListActivity extends AppCompatActivity {
             Toast.makeText(this, e.getMessage(), Toast.LENGTH_SHORT).show();
         }
 
-
-        flights = new ArrayList<>();
-        recyclerView=(RecyclerView)findViewById(R.id.recyclerview);
-
-
-        for (int i = 0; i < txtFlightName.length; i++) {
-            Flight beanClassForRecyclerView_contacts = new Flight(txtFlightName[i],txtCountry[i],txtStationArrived[i],imgPlane[i],
-                    txtCountryDestination[i],txtStationDestination[i],btnBuy[i]);
-            flights.add(beanClassForRecyclerView_contacts);
-        }
-
-
-        mAdapter = new RecyclerAdapter_Flight(FlightListActivity.this,flights);
-
-        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(FlightListActivity.this);
-        recyclerView.setLayoutManager(mLayoutManager);
-        recyclerView.setAdapter(mAdapter);
 
 
 
