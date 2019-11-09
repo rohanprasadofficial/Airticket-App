@@ -60,8 +60,6 @@ public class MainActivity extends AppCompatActivity {
     AutoCompleteTextView actvv;
     ArrayAdapter<String> dataAdapter;
     Spinner sp;
-
-
     Spinner spinner;
 
     @Override
@@ -83,13 +81,13 @@ public class MainActivity extends AppCompatActivity {
         addListenerOnButton();
 
 
-        text_roundtrip = (TextView) findViewById(R.id.text_roundtrip);
+          text_roundtrip = (TextView) findViewById(R.id.text_roundtrip);
 //        text_oneway = (TextView) findViewById(R.id.text_oneway);
-        linear1 = (LinearLayout) findViewById(R.id.linear1);
+         linear1 = (LinearLayout) findViewById(R.id.linear1);
 //        linear2 = (LinearLayout) findViewById(R.id.linear2);
-        line11 = (LinearLayout) findViewById(R.id.line11);
+         line11 = (LinearLayout) findViewById(R.id.line11);
 //        line22 = (LinearLayout) findViewById(R.id.line22);
-        edittext = (EditText) findViewById(R.id.txtdata);
+          edittext = (EditText) findViewById(R.id.txtdata);
 //        edittext2 = (EditText) findViewById(R.id.txtdata2);
 
         try {
@@ -113,10 +111,7 @@ public class MainActivity extends AppCompatActivity {
 
                             }
 
-
                             alertDialog.dismiss();
-
-
 
                         } else {
                             Log.i("TEST", response.body().getMessage().toString());
@@ -271,13 +266,13 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-
                 Log.i("FROM",actv.getText().toString());
                 Log.i("TO",actvv.getText().toString());
                  Log.i("DATE",edittext.getText().toString());
                 Log.i("CLASS",spinner2.getSelectedItem().toString());
 
-                Intent intent = new Intent(MainActivity.this, TicketActivity.class);
+                Intent intent = new Intent(MainActivity.this, FlightListActivity.class);
+
                 startActivity(intent);
             }
         });
