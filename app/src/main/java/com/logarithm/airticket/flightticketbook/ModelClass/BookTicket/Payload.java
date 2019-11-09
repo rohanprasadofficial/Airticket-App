@@ -4,7 +4,9 @@ package com.logarithm.airticket.flightticketbook.ModelClass.BookTicket;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class Payload {
+import java.io.Serializable;
+
+public class Payload  implements Serializable {
 
     @SerializedName("_id")
     @Expose

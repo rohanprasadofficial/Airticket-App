@@ -2,6 +2,7 @@ package com.logarithm.airticket.flightticketbook.RestAPI;
 
 
 
+import com.logarithm.airticket.flightticketbook.ModelClass.BookTicket.BookTicket;
 import com.logarithm.airticket.flightticketbook.ModelClass.DeleteFlight.DeleteFlight;
 import com.logarithm.airticket.flightticketbook.ModelClass.Login;
 import com.logarithm.airticket.flightticketbook.ModelClass.Profile.Profile;
@@ -68,6 +69,10 @@ public interface APIInterface {
 
     @GET("auth/profile")
     Call<Profile> getProfile(@Header("Authorization") String token);
+
+
+    @POST("booking/bookticket")
+    Call<BookTicket> bookTicket(@Header("Authorization") String token,@Body com.logarithm.airticket.flightticketbook.ParametersClass.BookTicket bookTicket);
 
 
 

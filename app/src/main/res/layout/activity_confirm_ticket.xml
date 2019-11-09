@@ -24,6 +24,17 @@
         android:layout_height="wrap_content"
         android:textStyle="bold"
         android:paddingTop="10dp"
+        android:textSize="10dp"
+        android:paddingBottom="10dp"
+        android:textColor="#000"
+        android:text="Screenshot this for futher reference"/>
+
+    <customfonts.MyTextView_Roboto_Bold
+        android:id="@+id/name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:paddingTop="10dp"
         android:textSize="20dp"
         android:paddingBottom="10dp"
         android:textColor="#000"
@@ -41,6 +52,7 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
             <customfonts.MyTextView_Roboto_Medium
+
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/txtCountry"
@@ -88,10 +100,12 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="15dp"
+                android:id="@+id/txtCountryDestination"
                 android:text="Paris"/>
             <customfonts.MyTextView_Roboto_Bold
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:id="@+id/txtStationDestination"
                 android:textColor="#000"
                 android:layout_marginTop="2dp"
                 android:layout_marginBottom="2dp"
@@ -127,6 +141,7 @@
                 android:text="Passengers"/>
             <customfonts.MyTextView_Roboto_Medium
                 android:layout_width="wrap_content"
+                android:id="@+id/passengerName"
                 android:layout_height="wrap_content"
                 android:textColor="#000"
                 android:layout_marginTop="2dp"
@@ -202,6 +217,7 @@
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:gravity="left"
+                android:id="@+id/flightnumber"
                 android:textSize="16dp"
                 android:textColor="@color/textcolor"
                 android:layout_height="wrap_content"
@@ -211,11 +227,13 @@
                 android:layout_weight="1"
                 android:textSize="16dp"
                 android:textColor="@color/textcolor"
+                android:id="@+id/date"
                 android:gravity="left"
                 android:layout_height="wrap_content"
                 android:text="3/24/2017"/>
             <customfonts.MyTextView_Roboto_Medium
                 android:layout_width="0dp"
+                android:id="@+id/txtTimeArrived"
                 android:layout_weight="1"
                 android:gravity="end"
                 android:textSize="16dp"
@@ -294,9 +312,10 @@
                 android:layout_weight="1"
                 android:gravity="end"
                 android:textSize="16dp"
+
                 android:textColor="#1be68d"
                 android:layout_height="wrap_content"
-                android:text="8:30 AM"/>
+                android:text="1 Hour before above time"/>
         </LinearLayout>
     </LinearLayout>
 </LinearLayout>
@@ -323,7 +342,7 @@
     <customfonts.MyTextView_Roboto_Medium
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/cardView"
+
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="133dp"
         android:layout_weight="1"

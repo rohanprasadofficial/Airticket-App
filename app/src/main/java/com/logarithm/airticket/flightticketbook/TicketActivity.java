@@ -11,6 +11,7 @@ import android.widget.Toast;
 
 import com.logarithm.airticket.flightticketbook.ModelClass.RecyclerMessage;
 import com.logarithm.airticket.flightticketbook.ModelClass.Response;
+import com.logarithm.airticket.flightticketbook.ParametersClass.BookTicket;
 import com.logarithm.airticket.flightticketbook.RestAPI.APIClient;
 import com.logarithm.airticket.flightticketbook.RestAPI.APIInterface;
 
@@ -18,6 +19,7 @@ import dmax.dialog.SpotsDialog;
 import retrofit2.Call;
 import retrofit2.Callback;
 
+import static com.logarithm.airticket.flightticketbook.Login.EMAIL;
 import static com.logarithm.airticket.flightticketbook.LoginAdmin.TOKEN_ID_ADMIN;
 import static com.logarithm.airticket.flightticketbook.MainActivity.CLASS;
 import static com.logarithm.airticket.flightticketbook.PassengerDetail.NAME;
@@ -38,13 +40,6 @@ public class TicketActivity extends AppCompatActivity {
 
         try {
             flight = (RecyclerMessage) getIntent().getSerializableExtra("Flight");
-
-
-
-
-
-
-
             txtFlightName = findViewById(R.id.txtFlightName);
             txtFlightName.setText(flight.getName());
             txtCountry = findViewById(R.id.txtCountry);
@@ -83,26 +78,28 @@ public class TicketActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View view) {
 
-
                     alertDialog = new SpotsDialog.Builder().setContext(TicketActivity.this).setTheme(R.style.Custom).build();
                     alertDialog.setMessage("Booking Flight... ");
                     alertDialog.show();
 
-                        com.logarithm.airticket.flightticketbook.ParametersClass.AddFlight credentials = new com.logarithm.airticket.flightticketbook.ParametersClass.AddFlight(name.getText().toString(),flightNo.getText().toString(),flightID.getText().toString(),actv.getText().toString(),actvv.getText().toString(),sourceTime.getText().toString(),destTime.getText().toString(),sourceDate.getText().toString(),destDate.getText().toString(),FPrice.getText().toString(),BPrice.getText().toString(),PPrice.getText().toString(),EPrice.getText().toString());
-                        final APIInterface apiService = APIClient.getClient().create(APIInterface.class);
-                        Call<Response> call2 = apiService.addFlight(TOKEN_ID_ADMIN,credentials);
-                        call2.enqueue(new Callback<Response>() {
+                    BookTicket bookTicket=new BookTicket(flight.getSource(),flight.getDestination(),flight.getSourceDate(),flight.getDestDate(),flight.getSourceTime(),flight.getDestTime(),CLASS,EMAIL,NAME,flight.getFlightID(),flight.getFlightNumber(),flight.getName());
+
+                    final APIInterface apiService = APIClient.getClient().create(APIInterface.class);
+                        Call<com.logarithm.airticket.flightticketbook.ModelClass.BookTicket.BookTicket> call2 = apiService.bookTicket(TOKEN_ID_ADMIN,bookTicket);
+                        call2.enqueue(new Callback<com.logarithm.airticket.flightticketbook.ModelClass.BookTicket.BookTicket>() {
                             @Override
-                            public void onResponse(Call<com.logarithm.airticket.flightticketbook.ModelClass.Response> call, retrofit2.Response<Response> response) {
+                            public void onResponse(Call<com.logarithm.airticket.flightticketbook.ModelClass.BookTicket.BookTicket> call, retrofit2.Response<com.logarithm.airticket.flightticketbook.ModelClass.BookTicket.BookTicket> response) {
                                 try {
                                     alertDialog.dismiss();
-                                    if (response.body().getSuccess()) {
+                                    if (response.body().getStatus()) {
                                         //  TOKEN_ID=response.body().getToken();
-                                        Toast.makeText(TicketActivity.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
-                                        startActivity(new Intent(getApplicationContext(),AdminDashboard.class));
-                                        finish();
+                                        Toast.makeText(TicketActivity.this, "Booking Successfull !", Toast.LENGTH_SHORT).show();
+
+                                        Intent intent = new Intent(TicketActivity.this, ConfirmTicketActivity.class);
+                                        intent.putExtra("Flight",response.body().getPayload());
+                                        startActivity(intent);
                                     } else {
-                                        Toast.makeText(TicketActivity.this,response.body().getMessage(), Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(TicketActivity.this,"Booking Error", Toast.LENGTH_SHORT).show();
                                     }
                                     //   alertDialog.dismiss();
 
@@ -115,7 +112,7 @@ public class TicketActivity extends AppCompatActivity {
                             }
 
                             @Override
-                            public void onFailure(Call<com.logarithm.airticket.flightticketbook.ModelClass.Response> call, Throwable t) {
+                            public void onFailure(Call<com.logarithm.airticket.flightticketbook.ModelClass.BookTicket.BookTicket> call, Throwable t) {
                                 Toast.makeText(TicketActivity.this, "Something Went Wrong", Toast.LENGTH_SHORT).show();
                                 alertDialog.dismiss();
 
@@ -123,23 +120,6 @@ public class TicketActivity extends AppCompatActivity {
                         });
                     }
 
-            });
-
-
-
-
-
-
-
-
-
-
-
-
-
-                    Intent intent = new Intent(TicketActivity.this, FlightListActivity.class);
-                    startActivity(intent);
-                }
             });
         }catch (Exception e)
         {
