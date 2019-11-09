@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.logarithm.airticket.flightticketbook.ModelClass.Flight;
 import com.logarithm.airticket.flightticketbook.ModelClass.RecyclerMessage;
@@ -19,6 +20,7 @@ public class PassengerDetail extends AppCompatActivity {
     TextView name,email,Tclass,date,price;
     RecyclerMessage flight;
     Button book;
+    public static String NAME,PRICE;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,23 +34,49 @@ public class PassengerDetail extends AppCompatActivity {
         book=findViewById(R.id.btn_book);
         flight= (RecyclerMessage)getIntent().getSerializableExtra("Flight");
 
-
         email.setText(EMAIL);
         Tclass.setText(CLASS);
         date.setText(DATE);
-        if(CLASS.equals("First Class"))
-        price.setText(flight.getFclassPrice());
+        if(CLASS.equals("First Class")) {
+            price.setText(flight.getFclassPrice());
+            PRICE=flight.getFclassPrice();
+
+        }
         if(CLASS.equals("Business Class"))
+        {
+
             price.setText(flight.getBclassPrice());
+            PRICE=flight.getBclassPrice();
+
+        }
+
         if(CLASS.equals("Premium Economy"))
+        {
             price.setText(flight.getPclassPrice());
+            PRICE=flight.getPclassPrice();
+        }
+
         if(CLASS.equals("Economy Class"))
+
+        {
             price.setText(flight.getEclassPrice());
+            PRICE=flight.getEclassPrice();
+
+        }
+
 
         book.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(getApplicationContext(),TicketActivity.class));
+                if (name.getText().length() < 0) {
+                    Toast.makeText(PassengerDetail.this, "Fileds cannot be blank !", Toast.LENGTH_SHORT).show();
+                } else {
+
+                    Intent intent=new Intent(getApplicationContext(),TicketActivity.class);
+                    intent.putExtra("Flight",flight);
+                    NAME=name.getText().toString();
+                    startActivity(new Intent(getApplicationContext(), TicketActivity.class));
+                }
             }
         });
 

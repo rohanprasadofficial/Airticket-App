@@ -13,10 +13,6 @@
             android:layout_height="25dp"
             android:src="@drawable/leftarrowwhite" />
 
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="22dp"
-            android:scaleType="fitEnd"
-            android:src="@drawable/uploadingarchive" />
+
     </LinearLayout>
 

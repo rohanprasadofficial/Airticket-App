@@ -200,44 +200,12 @@
                                     android:textSize="12dp" />
 
                                 <customfonts.MyTextView_Roboto_Regular
+                                    android:id="@+id/passengerName"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:layout_marginBottom="2dp"
 
                                     android:layout_marginTop="2dp"
-                                    android:text="Lucy Parson"
-                                    android:textColor="#000"
-                                    android:textSize="19dp" />
-
-
-                                <customfonts.MyTextView_Roboto_Regular
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
                                     android:layout_marginBottom="2dp"
-
-                                    android:layout_marginTop="2dp"
-                                    android:text="Lucy Parson"
-                                    android:textColor="#000"
-                                    android:textSize="19dp" />
-
-
-                                <customfonts.MyTextView_Roboto_Regular
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginBottom="2dp"
-
-                                    android:layout_marginTop="2dp"
-                                    android:text="Lucy Parson"
-                                    android:textColor="#000"
-                                    android:textSize="19dp" />
-
-
-                                <customfonts.MyTextView_Roboto_Regular
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginBottom="2dp"
-
-                                    android:layout_marginTop="2dp"
                                     android:text="Lucy Parson"
                                     android:textColor="#000"
                                     android:textSize="19dp" />
@@ -265,15 +233,6 @@
                                     android:layout_marginBottom="2dp"
                                     android:layout_marginTop="2dp"
                                     android:text="14 A"
-                                    android:textColor="#000"
-                                    android:textSize="19dp" />
-
-                                <customfonts.MyTextView_Roboto_Regular
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginBottom="2dp"
-                                    android:layout_marginTop="2dp"
-                                    android:text="14 B"
                                     android:textColor="#000"
                                     android:textSize="19dp" />
 
@@ -311,9 +270,9 @@
                                 <customfonts.MyTextView_Roboto_Bold
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:layout_marginBottom="2dp"
                                     android:layout_marginTop="4dp"
-                                    android:text="2 * 23 Kg"
+                                    android:layout_marginBottom="2dp"
+                                    android:text="1 * 23 Kg"
                                     android:textColor="#000"
                                     android:textSize="19dp"
                                     android:textStyle="bold" />
@@ -328,13 +287,14 @@
                                 android:orientation="vertical">
 
                                 <customfonts.MyTextView_Roboto_Regular
+                                    android:id="@+id/passengerType"
                                     android:layout_width="wrap_content"
                                     android:layout_height="match_parent"
                                     android:layout_gravity="end"
-                                    android:layout_marginBottom="2dp"
                                     android:layout_marginTop="2dp"
+                                    android:layout_marginBottom="2dp"
                                     android:gravity="bottom"
-                                    android:text="Priority Bording"
+                                    android:text="Boarding Later"
                                     android:textColor="#000"
                                     android:textSize="17dp" />
 
@@ -386,11 +346,12 @@
             android:orientation="horizontal">
 
             <customfonts.MyTextView_Roboto_Bold
+                android:id="@+id/price"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="2dp"
                 android:layout_marginTop="2dp"
-                android:text="$ 2.231"
+                android:layout_marginBottom="2dp"
+                android:text="$ 0"
                 android:textColor="#000"
                 android:textSize="22dp"
                 android:textStyle="bold" />
