@@ -3,7 +3,9 @@ package com.logarithm.airticket.flightticketbook.ModelClass;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class RecyclerMessage {
+import java.io.Serializable;
+
+public class RecyclerMessage  implements Serializable {
 
     @SerializedName("_id")
     @Expose
@@ -131,6 +133,7 @@ public class RecyclerMessage {
     public String getDestDate() {
         return destDate;
     }
+
 
     public void setDestDate(String destDate) {
         this.destDate = destDate;

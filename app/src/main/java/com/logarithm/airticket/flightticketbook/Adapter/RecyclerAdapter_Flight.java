@@ -53,8 +53,6 @@ public class RecyclerAdapter_Flight extends RecyclerView.Adapter<RecyclerAdapter
 
         public MyViewHolder(View view) {
             super(view);
-
-
             linear = itemView.findViewById(R.id.linear);
             txtFlightName = itemView.findViewById(R.id.txtFlightName);
             txtCountry = itemView.findViewById(R.id.txtCountry);
@@ -89,11 +87,9 @@ public class RecyclerAdapter_Flight extends RecyclerView.Adapter<RecyclerAdapter
     }
 
 
-
-
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
     @Override
-    public void onBindViewHolder(final MyViewHolder holder, int position)
+    public void onBindViewHolder(final MyViewHolder holder, final int position)
     {
 
         RecyclerMessage movie = moviesList.get(position);
@@ -113,13 +109,12 @@ public class RecyclerAdapter_Flight extends RecyclerView.Adapter<RecyclerAdapter
         holder.btnBuy.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-
-
-
                 Intent intent = new Intent(mContext, ConfirmTicketActivity.class);
-                mContext.startActivity(intent);
 
+                intent.putExtra("Flight",moviesList.get(position));
+
+
+                mContext.startActivity(intent);
 
             }
         });

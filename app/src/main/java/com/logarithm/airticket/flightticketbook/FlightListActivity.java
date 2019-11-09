@@ -43,6 +43,7 @@ public class FlightListActivity extends AppCompatActivity {
     public AlertDialog alertDialog = null;
     List<RecyclerMessage> tripList;
 
+    TextView SourceToolbar,DestinationToolbar;
 
     private String txtFlightName  []= {"AIRFRANCE ","Emirates","AIRFRANCE"};
     private String txtCountry []={"Paris","Paris","AIRFRANCE"};
@@ -61,6 +62,13 @@ public class FlightListActivity extends AppCompatActivity {
         setContentView(R.layout.flight_list_view);
         Source=getIntent().getStringExtra("FROM");
         Destination=getIntent().getStringExtra("TO");
+
+        SourceToolbar=findViewById(R.id.SourceToolbar);
+        DestinationToolbar=findViewById(R.id.DestinationToolbar);
+
+        SourceToolbar.setText(Source);
+        DestinationToolbar.setText(Destination);
+
         try {
             // call the constructor of CustomAdapter to send the reference and data to Adapter
             alertDialog = new SpotsDialog.Builder().setContext(FlightListActivity.this).setTheme(R.style.Custom).build();
@@ -86,18 +94,16 @@ public class FlightListActivity extends AppCompatActivity {
                                 Toast.makeText(FlightListActivity.this, tripList.get(0).getName(), Toast.LENGTH_SHORT).show();
 
 
-
-
-                                flights = new ArrayList<>();
+//                                flights = new ArrayList<>();
                                 recyclerView=(RecyclerView)findViewById(R.id.recyclerview);
 
-                                for (int i = 0; i < tripList.size(); i++) {
-//                                    RecyclerMessage beanClassForRecyclerView_contacts = new RecyclerMessage(tripList.get(i).getName(),tripList.get(i).getSource(),tripList.get(i).getSource(),imgPlane[i],
-//                                            tripList.get(i).getDestination(), tripList.get(i).getDestination(),btnBuy[i]);
-                                    flights.add(tripList.get(i));
-                                }
+//                                for (int i = 0; i < tripList.size(); i++) {
+////                                    RecyclerMessage beanClassForRecyclerView_contacts = new RecyclerMessage(tripList.get(i).getName(),tripList.get(i).getSource(),tripList.get(i).getSource(),imgPlane[i],
+////                                            tripList.get(i).getDestination(), tripList.get(i).getDestination(),btnBuy[i]);
+//                                    flights.addAll(tripList);
+//                                }
 
-                                mAdapter = new RecyclerAdapter_Flight(FlightListActivity.this,flights);
+                                mAdapter = new RecyclerAdapter_Flight(FlightListActivity.this,tripList);
 
                                 RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(FlightListActivity.this);
                                 recyclerView.setLayoutManager(mLayoutManager);
