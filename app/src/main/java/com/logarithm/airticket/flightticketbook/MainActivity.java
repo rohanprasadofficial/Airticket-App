@@ -40,6 +40,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+import static com.logarithm.airticket.flightticketbook.Login.TOKEN_ID;
 import static com.logarithm.airticket.flightticketbook.LoginAdmin.TOKEN_ID_ADMIN;
 
 public class MainActivity extends AppCompatActivity {
@@ -65,8 +66,8 @@ public class MainActivity extends AppCompatActivity {
     LinearLayout bookings;
     LinearLayout logout;
 
-    SharedPreferences pref = getApplicationContext().getSharedPreferences("cred", 0); // 0 - for private mode
-    SharedPreferences.Editor editor = pref.edit();
+    SharedPreferences pref ;
+    SharedPreferences.Editor editor ;
 
 
     @Override
@@ -75,6 +76,11 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 //        Spinner spinner = (Spinner) findViewById(R.id.spinnerPassengers);
         fruits=new ArrayList<>();
+
+         pref = getApplicationContext().getSharedPreferences("cred", 0); // 0 - for private mode
+          editor = pref.edit();
+
+
 
         bookings=findViewById(R.id.booking);
         bookings.setOnClickListener(new View.OnClickListener() {
@@ -96,7 +102,6 @@ public class MainActivity extends AppCompatActivity {
                 finish();
             }
         });
-
 
         list.add(new ItemData_Cusine("1",R.drawable.ic_onewoman));
         list.add(new ItemData_Cusine("2",R.drawable.ic_family));
@@ -125,7 +130,7 @@ public class MainActivity extends AppCompatActivity {
             alertDialog.setMessage("Getting Airports info..");
             alertDialog.show();
             final APIInterface apiService = APIClient.getClient().create(APIInterface.class);
-            Call<com.logarithm.airticket.flightticketbook.ModelClass.DeleteAirport.DeleteAirport> call2 = apiService.getAllAirports(TOKEN_ID_ADMIN);
+            Call<com.logarithm.airticket.flightticketbook.ModelClass.DeleteAirport.DeleteAirport> call2 = apiService.getAllAirports(TOKEN_ID);
             call2.enqueue(new Callback<com.logarithm.airticket.flightticketbook.ModelClass.DeleteAirport.DeleteAirport>() {
                 @Override
 

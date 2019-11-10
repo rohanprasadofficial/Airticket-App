@@ -33,8 +33,8 @@ public class LoginAdmin extends AppCompatActivity {
     Button btn_login;
     AlertDialog alertDialog;
 
-    SharedPreferences pref = getApplicationContext().getSharedPreferences("cred", 0); // 0 - for private mode
-    SharedPreferences.Editor editor = pref.edit();
+    SharedPreferences pref ;
+    SharedPreferences.Editor editor ;
 
 
 
@@ -47,6 +47,10 @@ public class LoginAdmin extends AppCompatActivity {
         btn_login=findViewById(R.id.btn_book);
         register=findViewById(R.id.registerView);
         Log.i("ACT ","LOGIN ADMIN");
+
+          pref = getApplicationContext().getSharedPreferences("cred", 0); // 0 - for private mode
+       editor = pref.edit();
+
 
         if(pref.getString("TOKEN_ID_ADMIN", null)!=null)
         {

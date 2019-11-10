@@ -157,8 +157,6 @@
                 android:background="@android:color/transparent"
                 android:drawableLeft="@drawable/ic_placeholder"
                 android:drawablePadding="14dp"
-                android:maxLength="10"
-                android:maxLines="1"
                 android:theme="@style/MineCustomTabText"/>
 
             <View

@@ -32,25 +32,34 @@ public class Login extends AppCompatActivity {
     public static  String EMAIL;
     AlertDialog alertDialog;
 
-    SharedPreferences pref = getApplicationContext().getSharedPreferences("cred", 0); // 0 - for private mode
-    SharedPreferences.Editor editor = pref.edit();
+    SharedPreferences pref;
+    SharedPreferences.Editor editor ;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        edt_username=findViewById(R.id.edt_email);
-        edt_pass=findViewById(R.id.edt_pass);
-        btn_login=findViewById(R.id.btn_book);
-        register=findViewById(R.id.registerView);
-        Log.i("ACT ","LOGIN");
 
-        if(pref.getString("TOKEN_ID", null)!=null)
+        try {
+           pref = getApplicationContext().getSharedPreferences("cred", 0); // 0 - for private mode
+            editor = pref.edit();
+            edt_username = findViewById(R.id.edt_email);
+            edt_pass = findViewById(R.id.edt_pass);
+            btn_login = findViewById(R.id.btn_book);
+            register = findViewById(R.id.registerView);
+            Log.i("ACT ", "LOGIN");
+
+            if (pref.getString("TOKEN_ID", null) != null) {
+                TOKEN_ID = pref.getString("TOKEN_ID", null);
+                startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                finish();
+            }
+
+        }catch (Exception e)
         {
-            TOKEN_ID=pref.getString("TOKEN_ID",null);
-            startActivity(new Intent(getApplicationContext(),MainActivity.class));
-            finish();
+            e.printStackTrace();
+            Toast.makeText(this, e.getMessage(), Toast.LENGTH_SHORT).show();
         }
 
 
@@ -82,9 +91,9 @@ public class Login extends AppCompatActivity {
                                 alertDialog.dismiss();
                                 if (response.body().getSuccess()) {
 
-                                        editor.putString("TOKEN_ID",TOKEN_ID);
                                     TOKEN_ID=response.body().getToken();
-                            editor.commit();
+                                    editor.putString("TOKEN_ID",TOKEN_ID);
+                                    editor.commit();
                                     alertDialog = new SpotsDialog.Builder().setContext(Login.this).setTheme(R.style.Custom).build();
                                     alertDialog.setMessage("Getting Profile... ");
                                     alertDialog.show();
@@ -98,11 +107,8 @@ public class Login extends AppCompatActivity {
 
                                                 alertDialog.dismiss();
                                                     EMAIL=response.body().getEmail();
-
-
                                                     startActivity(new Intent(getApplicationContext(),MainActivity.class));
                                                     finish();
-
                                                 //   alertDialog.dismiss();
 
                                             } catch (Exception e) {

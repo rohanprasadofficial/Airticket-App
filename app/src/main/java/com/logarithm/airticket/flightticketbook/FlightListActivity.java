@@ -27,6 +27,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+import static com.logarithm.airticket.flightticketbook.Login.TOKEN_ID;
 import static com.logarithm.airticket.flightticketbook.LoginAdmin.TOKEN_ID_ADMIN;
 
 public class FlightListActivity extends AppCompatActivity {
@@ -76,10 +77,9 @@ public class FlightListActivity extends AppCompatActivity {
             alertDialog.show();
             final APIInterface apiService = APIClient.getClient().create(APIInterface.class);
             GetSpecFlight getSpecFlight=new GetSpecFlight(Source,Destination);
-            Call<RecyclerGet> call2 = apiService.getAllSpecflights(TOKEN_ID_ADMIN,getSpecFlight);
+            Call<RecyclerGet> call2 = apiService.getAllSpecflights(TOKEN_ID,getSpecFlight);
             call2.enqueue(new Callback<RecyclerGet>() {
                 @Override
-
                 public void onResponse(Call<RecyclerGet> call, Response<RecyclerGet> response) {
                     try {
                         alertDialog.dismiss();
