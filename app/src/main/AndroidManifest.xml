@@ -11,8 +11,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Bookings"></activity>
-        <activity android:name=".PassengerDetail" />
+        <activity android:name=".Bookings"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity android:name=".PassengerDetail"
+            android:theme="@style/AppTheme.NoActionBar"/>
         <activity
             android:name=".DeleteAirport"
             android:theme="@style/AppTheme.NoActionBar" />

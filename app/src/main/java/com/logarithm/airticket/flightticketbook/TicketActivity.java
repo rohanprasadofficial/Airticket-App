@@ -20,6 +20,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 
 import static com.logarithm.airticket.flightticketbook.Login.EMAIL;
+import static com.logarithm.airticket.flightticketbook.Login.TOKEN_ID;
 import static com.logarithm.airticket.flightticketbook.LoginAdmin.TOKEN_ID_ADMIN;
 import static com.logarithm.airticket.flightticketbook.MainActivity.CLASS;
 import static com.logarithm.airticket.flightticketbook.PassengerDetail.NAME;
@@ -85,7 +86,7 @@ public class TicketActivity extends AppCompatActivity {
                     BookTicket bookTicket=new BookTicket(flight.getSource(),flight.getDestination(),flight.getSourceDate(),flight.getDestDate(),flight.getSourceTime(),flight.getDestTime(),CLASS,EMAIL,NAME,flight.getFlightID(),flight.getFlightNumber(),flight.getName());
 
                     final APIInterface apiService = APIClient.getClient().create(APIInterface.class);
-                        Call<com.logarithm.airticket.flightticketbook.ModelClass.BookTicket.BookTicket> call2 = apiService.bookTicket(TOKEN_ID_ADMIN,bookTicket);
+                        Call<com.logarithm.airticket.flightticketbook.ModelClass.BookTicket.BookTicket> call2 = apiService.bookTicket(TOKEN_ID,bookTicket);
                         call2.enqueue(new Callback<com.logarithm.airticket.flightticketbook.ModelClass.BookTicket.BookTicket>() {
                             @Override
                             public void onResponse(Call<com.logarithm.airticket.flightticketbook.ModelClass.BookTicket.BookTicket> call, retrofit2.Response<com.logarithm.airticket.flightticketbook.ModelClass.BookTicket.BookTicket> response) {
@@ -98,6 +99,7 @@ public class TicketActivity extends AppCompatActivity {
                                         Intent intent = new Intent(TicketActivity.this, ConfirmTicketActivity.class);
                                         intent.putExtra("Flight",response.body().getPayload());
                                         startActivity(intent);
+                                        finish();
                                     } else {
                                         Toast.makeText(TicketActivity.this,"Booking Error", Toast.LENGTH_SHORT).show();
                                     }

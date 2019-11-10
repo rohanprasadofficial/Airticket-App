@@ -52,6 +52,7 @@ public class Login extends AppCompatActivity {
 
             if (pref.getString("TOKEN_ID", null) != null) {
                 TOKEN_ID = pref.getString("TOKEN_ID", null);
+                EMAIL=pref.getString("EMAIL",null);
                 startActivity(new Intent(getApplicationContext(), MainActivity.class));
                 finish();
             }
@@ -93,7 +94,8 @@ public class Login extends AppCompatActivity {
 
                                     TOKEN_ID=response.body().getToken();
                                     editor.putString("TOKEN_ID",TOKEN_ID);
-                                    editor.commit();
+
+
                                     alertDialog = new SpotsDialog.Builder().setContext(Login.this).setTheme(R.style.Custom).build();
                                     alertDialog.setMessage("Getting Profile... ");
                                     alertDialog.show();
@@ -105,8 +107,11 @@ public class Login extends AppCompatActivity {
                                         public void onResponse(Call<Profile> call, Response<Profile> response) {
                                             try {
 
-                                                alertDialog.dismiss();
+                                                    alertDialog.dismiss();
+                                                    Log.i("TEST EMAIL",response.body().getEmail());
                                                     EMAIL=response.body().getEmail();
+                                                    editor.putString("EMAIL",EMAIL);
+                                                editor.commit();
                                                     startActivity(new Intent(getApplicationContext(),MainActivity.class));
                                                     finish();
                                                 //   alertDialog.dismiss();

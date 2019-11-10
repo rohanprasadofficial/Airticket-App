@@ -46,14 +46,6 @@ public class FlightListActivity extends AppCompatActivity {
 
     TextView SourceToolbar,DestinationToolbar;
 
-    private String txtFlightName  []= {"AIRFRANCE ","Emirates","AIRFRANCE"};
-    private String txtCountry []={"Paris","Paris","AIRFRANCE"};
-    private String txtStationArrived []={"New York","New York","AIRFRANCE"};
-    private int imgPlane []={R.drawable.ic_blackplane,R.drawable.ic_blackplane,R.drawable.ic_blackplane};
-    private String txtCountryDestination []={"CDG","CDG","CDG"};
-    private String txtStationDestination []={"JFK","JFK","JFK"};
-    private String btnBuy []={"Buy","Buy","Buy"};
-
     private ArrayList<RecyclerMessage> flights;
     private RecyclerView recyclerView;
     private RecyclerAdapter_Flight mAdapter;

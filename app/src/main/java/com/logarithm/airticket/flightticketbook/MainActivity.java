@@ -97,6 +97,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 editor.remove("TOKEN_ID");
+                editor.remove("EMAIL");
                 editor.commit();
                 startActivity(new Intent(getApplicationContext(),RoleChoose.class));
                 finish();
@@ -301,14 +302,14 @@ public class MainActivity extends AppCompatActivity {
                 Log.i("DATE",edittext.getText().toString());
                 Log.i("CLASS",spinner2.getSelectedItem().toString());
 
-                CLASS=actv.getText().toString();
-                DATE=actv.getText().toString();
+                CLASS=spinner2.getSelectedItem().toString();
+                DATE=edittext.getText().toString();
 
                 Intent intent = new Intent(MainActivity.this, FlightListActivity.class);
                 intent.putExtra("FROM",actv.getText().toString());
-                intent.putExtra("TO",actv.getText().toString());
-                intent.putExtra("DATE",actv.getText().toString());
-                intent.putExtra("CLASS",actv.getText().toString());
+                intent.putExtra("TO",actvv.getText().toString());
+                intent.putExtra("DATE",edittext.getText().toString());
+                intent.putExtra("CLASS",spinner2.getSelectedItem().toString());
                 startActivity(intent);
             }
         });

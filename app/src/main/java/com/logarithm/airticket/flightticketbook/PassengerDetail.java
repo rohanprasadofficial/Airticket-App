@@ -70,13 +70,14 @@ public class PassengerDetail extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if (name.getText().length() < 0) {
-                    Toast.makeText(PassengerDetail.this, "Fileds cannot be blank !", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(PassengerDetail.this, "Fields cannot be blank !", Toast.LENGTH_SHORT).show();
                 } else {
 
                     Intent intent=new Intent(getApplicationContext(),TicketActivity.class);
                     intent.putExtra("Flight",flight);
                     NAME=name.getText().toString();
                     startActivity(intent);
+                    finish();
                 }
             }
         });
