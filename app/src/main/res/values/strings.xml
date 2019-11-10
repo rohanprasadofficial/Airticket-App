@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Flight Ticket Book</string>
+    <string name="app_name">AirTicket</string>
     <string name="country_prompt">Choose a country</string>
     <string name="buy">Buy</string>
 
