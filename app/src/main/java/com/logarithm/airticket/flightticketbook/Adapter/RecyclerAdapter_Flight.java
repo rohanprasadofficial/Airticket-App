@@ -87,7 +87,6 @@ public class RecyclerAdapter_Flight extends RecyclerView.Adapter<RecyclerAdapter
 
     }
 
-
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
     @Override
     public void onBindViewHolder(final MyViewHolder holder, final int position)

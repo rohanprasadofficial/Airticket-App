@@ -31,7 +31,7 @@
             android:layout_marginTop="0dp"
             android:orientation="vertical">
 
-            <include layout="@layout/toolbar_main" />
+            <!--<include layout="@layout/toolbar_main" />-->
 
             <customfonts.MyTextView_Roboto_Bold
                 android:layout_width="match_parent"

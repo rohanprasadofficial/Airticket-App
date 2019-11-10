@@ -59,6 +59,7 @@ public class FlightListActivity extends AppCompatActivity {
         SourceToolbar=findViewById(R.id.SourceToolbar);
         DestinationToolbar=findViewById(R.id.DestinationToolbar);
 
+
         SourceToolbar.setText(Source);
         DestinationToolbar.setText(Destination);
 
