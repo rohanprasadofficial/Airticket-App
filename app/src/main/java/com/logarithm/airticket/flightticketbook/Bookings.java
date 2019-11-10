@@ -20,6 +20,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+import static com.logarithm.airticket.flightticketbook.Login.TOKEN_ID;
 
 
 public class Bookings extends AppCompatActivity {
@@ -44,7 +45,7 @@ public class Bookings extends AppCompatActivity {
             alertDialog.setMessage("Getting flights info..");
             alertDialog.show();
             final APIInterface apiService = APIClient.getClient().create(APIInterface.class);
-            Call<ViewBooking> call2 = apiService.viewBookings("Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiYWRtaW4iLCJpZCI6IjVkYzJmY2Y0N2UzOGQ2MzY2NThkOGQ3NSIsImVtYWlsIjoiYWRtaW5AZ21haWwuY29tIiwicGFzc3dvcmQiOiIkMmEkMTAkNkM1ZTF0QnEyYjZCUkdtbGxPMTZnZXVVOEQzOFA1S1dkQkJRL0JDNGdOeEdGVjNsaC85S2UiLCJwcm9maWxlcGljIjoiaHR0cHM6Ly9lZGxpZmUuZWR1Lm12L3dwLWNvbnRlbnQvdXBsb2Fkcy8yMDE3LzA1LzIwMTYxMDE0XzU4MDA2YmZkNzZkY2YucG5nIiwiaWF0IjoxNTczMzc1OTQ3fQ.p8RrVrHq02DZTxOVPg9QQ0SomcIEwI0CbOcG16EKUao");
+            Call<ViewBooking> call2 = apiService.viewBookings(TOKEN_ID);
             call2.enqueue(new Callback<ViewBooking>() {
                 @Override
 

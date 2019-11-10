@@ -3,6 +3,7 @@ package com.logarithm.airticket.flightticketbook;
 
 import android.app.AlertDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -27,10 +28,16 @@ import static com.logarithm.airticket.flightticketbook.Login.TOKEN_ID;
 public class LoginAdmin extends AppCompatActivity {
 
 
-    public static String  TOKEN_ID_ADMIN="Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiYWRtaW4iLCJpZCI6IjVkYzJmY2Y0N2UzOGQ2MzY2NThkOGQ3NSIsImVtYWlsIjoiYWRtaW5AZ21haWwuY29tIiwicGFzc3dvcmQiOiIkMmEkMTAkNkM1ZTF0QnEyYjZCUkdtbGxPMTZnZXVVOEQzOFA1S1dkQkJRL0JDNGdOeEdGVjNsaC85S2UiLCJwcm9maWxlcGljIjoiaHR0cHM6Ly9lZGxpZmUuZWR1Lm12L3dwLWNvbnRlbnQvdXBsb2Fkcy8yMDE3LzA1LzIwMTYxMDE0XzU4MDA2YmZkNzZkY2YucG5nIiwiaWF0IjoxNTczMTM2MzU1fQ.i9okD-2eR7_rOAzb8Zo1URQLFDdQBfinNvexPGnOtPU";
+    public static String  TOKEN_ID_ADMIN=null;
     TextView edt_username,edt_pass,register;
     Button btn_login;
-    AlertDialog alertDialog;;
+    AlertDialog alertDialog;
+
+    SharedPreferences pref = getApplicationContext().getSharedPreferences("cred", 0); // 0 - for private mode
+    SharedPreferences.Editor editor = pref.edit();
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,6 +48,12 @@ public class LoginAdmin extends AppCompatActivity {
         register=findViewById(R.id.registerView);
         Log.i("ACT ","LOGIN ADMIN");
 
+        if(pref.getString("TOKEN_ID_ADMIN", null)!=null)
+        {
+            TOKEN_ID_ADMIN=pref.getString("TOKEN_ID_ADMIN",null);
+            startActivity(new Intent(getApplicationContext(),AdminDashboard.class));
+            finish();
+        }
 
         register.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -69,8 +82,8 @@ public class LoginAdmin extends AppCompatActivity {
                                 alertDialog.dismiss();
                                 if (response.body().getSuccess()) {
                                     TOKEN_ID_ADMIN=response.body().getToken();
-
-
+                                    editor.putString("TOKEN_ID_ADMIN",TOKEN_ID_ADMIN);
+                                    editor.commit();
                                     alertDialog = new SpotsDialog.Builder().setContext(LoginAdmin.this).setTheme(R.style.Custom).build();
                                     alertDialog.setMessage("Getting Profile... ");
                                     alertDialog.show();

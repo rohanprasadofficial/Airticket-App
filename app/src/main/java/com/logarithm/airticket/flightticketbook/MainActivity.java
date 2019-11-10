@@ -4,6 +4,7 @@ import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -62,6 +63,11 @@ public class MainActivity extends AppCompatActivity {
     Spinner sp;
     Spinner spinner;
     LinearLayout bookings;
+    LinearLayout logout;
+
+    SharedPreferences pref = getApplicationContext().getSharedPreferences("cred", 0); // 0 - for private mode
+    SharedPreferences.Editor editor = pref.edit();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -79,6 +85,17 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+
+        logout=findViewById(R.id.logout);
+        logout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                editor.remove("TOKEN_ID");
+                editor.commit();
+                startActivity(new Intent(getApplicationContext(),RoleChoose.class));
+                finish();
+            }
+        });
 
 
         list.add(new ItemData_Cusine("1",R.drawable.ic_onewoman));

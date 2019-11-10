@@ -3,6 +3,7 @@ package com.logarithm.airticket.flightticketbook;
 
 import android.app.AlertDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -30,6 +31,11 @@ public class Login extends AppCompatActivity {
     Button btn_login;
     public static  String EMAIL;
     AlertDialog alertDialog;
+
+    SharedPreferences pref = getApplicationContext().getSharedPreferences("cred", 0); // 0 - for private mode
+    SharedPreferences.Editor editor = pref.edit();
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,6 +45,13 @@ public class Login extends AppCompatActivity {
         btn_login=findViewById(R.id.btn_book);
         register=findViewById(R.id.registerView);
         Log.i("ACT ","LOGIN");
+
+        if(pref.getString("TOKEN_ID", null)!=null)
+        {
+            TOKEN_ID=pref.getString("TOKEN_ID",null);
+            startActivity(new Intent(getApplicationContext(),MainActivity.class));
+            finish();
+        }
 
 
         register.setOnClickListener(new View.OnClickListener() {
@@ -68,8 +81,10 @@ public class Login extends AppCompatActivity {
                             try {
                                 alertDialog.dismiss();
                                 if (response.body().getSuccess()) {
-                                        TOKEN_ID=response.body().getToken();
 
+                                        editor.putString("TOKEN_ID",TOKEN_ID);
+                                    TOKEN_ID=response.body().getToken();
+                            editor.commit();
                                     alertDialog = new SpotsDialog.Builder().setContext(Login.this).setTheme(R.style.Custom).build();
                                     alertDialog.setMessage("Getting Profile... ");
                                     alertDialog.show();
