@@ -46,7 +46,6 @@ public class MainActivity extends AppCompatActivity {
     ArrayList<String> fruits;
 
     public AlertDialog alertDialog = null;
-    public static String TOKEN="Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiYWlydGlja2V0LWRldiIsImlkIjoiNWRiYTZlMGU2ZTM1N2U0OGVkM2JjODUzIiwiZW1haWwiOiJhaXJ0aWNrZXRkZXZAZ21haWwuY29tIiwicGFzc3dvcmQiOiIkMmEkMTAkRzBmMVVSWVFyMUE4cUNsNy44ZXpCdVdwbDdnNkpRd0dxc011N0dsQTBXOC8zRG5nYm51UEciLCJwcm9maWxlcGljIjoiaHR0cHM6Ly9lZGxpZmUuZWR1Lm12L3dwLWNvbnRlbnQvdXBsb2Fkcy8yMDE3LzA1LzIwMTYxMDE0XzU4MDA2YmZkNzZkY2YucG5nIiwiaWF0IjoxNTczMDQ2NTQ5fQ.uKcra8Ydm23HcG9PnfJLhl8I3uuS3hglhJ7ALmTZrrY";
     Date date;
     public  static String DATE,CLASS;
     private EditText edittext, edittext2;
@@ -62,6 +61,7 @@ public class MainActivity extends AppCompatActivity {
     ArrayAdapter<String> dataAdapter;
     Spinner sp;
     Spinner spinner;
+    LinearLayout bookings;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,6 +70,17 @@ public class MainActivity extends AppCompatActivity {
 //        Spinner spinner = (Spinner) findViewById(R.id.spinnerPassengers);
         fruits=new ArrayList<>();
 
+        bookings=findViewById(R.id.booking);
+        bookings.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                startActivity(new Intent(getApplicationContext(),Bookings.class));
+            }
+        });
+
+
+
         list.add(new ItemData_Cusine("1",R.drawable.ic_onewoman));
         list.add(new ItemData_Cusine("2",R.drawable.ic_family));
         list.add(new ItemData_Cusine("3",R.drawable.ic_threepersons));
@@ -77,6 +88,7 @@ public class MainActivity extends AppCompatActivity {
 //        Spinner_Cusine_DataAdapter adapter = new Spinner_Cusine_DataAdapter(MainActivity.this, list);
 //        sp.setAdapter(adapter);
 //        spinner.setAdapter(adapter);
+
 
         addItemsOnSpinner2();
         addListenerOnButton();

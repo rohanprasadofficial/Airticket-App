@@ -86,7 +86,7 @@ public class LoginAdmin extends AppCompatActivity {
                                                 Login.EMAIL=response.body().getEmail();
 
 
-                                                startActivity(new Intent(getApplicationContext(),MainActivity.class));
+                                                startActivity(new Intent(getApplicationContext(),AdminDashboard.class));
                                                 finish();
 
                                                 //   alertDialog.dismiss();

@@ -9,6 +9,7 @@ import com.logarithm.airticket.flightticketbook.ModelClass.Profile.Profile;
 import com.logarithm.airticket.flightticketbook.ModelClass.RecyclerGet;
 import com.logarithm.airticket.flightticketbook.ModelClass.RecyclerMessage;
 import com.logarithm.airticket.flightticketbook.ModelClass.Response;
+import com.logarithm.airticket.flightticketbook.ModelClass.ViewBooking.ViewBooking;
 import com.logarithm.airticket.flightticketbook.ParametersClass.AddAirport;
 import com.logarithm.airticket.flightticketbook.ParametersClass.AddFlight;
 import com.logarithm.airticket.flightticketbook.ParametersClass.Credentials;
@@ -73,6 +74,9 @@ public interface APIInterface {
 
     @POST("booking/bookticket")
     Call<BookTicket> bookTicket(@Header("Authorization") String token,@Body com.logarithm.airticket.flightticketbook.ParametersClass.BookTicket bookTicket);
+
+    @GET("booking/viewbookings")
+    Call<ViewBooking> viewBookings(@Header("Authorization") String token);
 
 
 
