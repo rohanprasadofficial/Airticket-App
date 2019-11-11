@@ -78,6 +78,10 @@ public interface APIInterface {
     @GET("booking/viewbookings")
     Call<ViewBooking> viewBookings(@Header("Authorization") String token);
 
+    @GET("booking/viewallbookings")
+    Call<ViewBooking> viewAllBookings(@Header("Authorization") String token);
+
+
 
 
 

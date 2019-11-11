@@ -189,6 +189,40 @@
 
 
 
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="30dp"
+        android:paddingRight="30dp"
+        android:layout_marginTop="30dp"
+        android:layout_gravity="center_horizontal"
+        android:orientation="horizontal">
+
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:cardBackgroundColor="@android:color/white"
+            app:cardCornerRadius="10dp">
+            <Button
+                android:id="@+id/btn_viewboookings"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:background="@drawable/rounded_corner"
+                android:paddingTop="8.7dp"
+                android:paddingBottom="8.71dp"
+                android:text="View All Bookings"
+                android:textAlignment="center"
+                android:textAllCaps="false"
+                android:textSize="14dp" />
+
+        </android.support.v7.widget.CardView>
+
     </LinearLayout>
 
     <LinearLayout

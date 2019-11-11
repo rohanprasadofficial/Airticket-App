@@ -18,7 +18,7 @@ public class AdminDashboard extends AppCompatActivity {
     SharedPreferences.Editor editor ;
 
 
-    Button addFlight,deleteFlight,addAirport,deleteAirport;
+    Button addFlight,deleteFlight,addAirport,deleteAirport , viewBookings;
     LinearLayout logout;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +34,15 @@ public class AdminDashboard extends AppCompatActivity {
         deleteAirport=findViewById(R.id.btn_deleteairport);
         deleteFlight=findViewById(R.id.btn_deleteflight);
         addFlight=findViewById(R.id.btn_addflight);
+        viewBookings=findViewById(R.id.btn_viewboookings);
+
+
+        viewBookings.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getApplicationContext(),ViewAllBookingAdmin.class));
+            }
+        });
 
 
         logout.setOnClickListener(new View.OnClickListener() {
