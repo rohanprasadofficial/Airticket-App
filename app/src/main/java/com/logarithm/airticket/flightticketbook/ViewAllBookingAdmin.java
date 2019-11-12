@@ -28,6 +28,7 @@ import static com.logarithm.airticket.flightticketbook.LoginAdmin.TOKEN_ID_ADMIN
 
 public class ViewAllBookingAdmin extends AppCompatActivity {
 
+
     public AlertDialog alertDialog = null;
     RecyclerView recyclerView;
     List<Message> tripList;
@@ -41,17 +42,14 @@ public class ViewAllBookingAdmin extends AppCompatActivity {
             // set a LinearLayoutManager with default vertical orientaion
             LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getApplicationContext());
             recyclerView.setLayoutManager(linearLayoutManager); // set LayoutManager to RecyclerVie
-
-
             recyclerView.addOnItemTouchListener(
                     new MyRecyclerItemClickListener(getApplicationContext(), new MyRecyclerItemClickListener.OnItemClickListener() {
                         @Override
                         public void onItemClick(View view, final int position) {
 
-
                             try {
                                 alertDialog = new SpotsDialog.Builder().setContext(ViewAllBookingAdmin.this).setTheme(R.style.Custom).build();
-                                alertDialog.setMessage("Deleting Flight.. ");
+                                alertDialog.setMessage("Deleting Booking.. ");
                                 alertDialog.show();
                                 final APIInterface apiService = APIClient.getClient().create(APIInterface.class);
                                 DeleteBooking deleteBooking=new DeleteBooking(tripList.get(position).getId());
@@ -96,23 +94,6 @@ public class ViewAllBookingAdmin extends AppCompatActivity {
                         }
                     })
             );
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
             // call the constructor of CustomAdapter to send the reference and data to Adapter
