@@ -8,9 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.logarithm.airticket.flightticketbook.ModelClass.ViewBooking.Message;
-
 import java.util.List;
 
 
@@ -36,7 +34,7 @@ public class ViewBookingAdapter extends RecyclerView.Adapter<ViewBookingAdapter.
           // set the data in items
         try {
             Message flight = tripList.get(position);
-           holder.from.setText(flight.getFrom());
+              holder.from.setText(flight.getFrom());
             holder.to.setText(flight.getTo());
             holder.date.setText(flight.getDepartDate());
             holder.time.setText(flight.getSourceTime());
@@ -57,16 +55,12 @@ public class ViewBookingAdapter extends RecyclerView.Adapter<ViewBookingAdapter.
     public int getItemCount() {
         return tripList.size();
     }
-
     public class MyViewHolder extends RecyclerView.ViewHolder {
-
-
         // init the item view's
         TextView from,to,date,time,travelType,passengername,FlightNumber,FlicketName,flightId,bookingDate;
 
         public MyViewHolder(View itemView) {
             super(itemView);
-
             try {
                 // get the reference of item view's
                from = itemView.findViewById(R.id.from);

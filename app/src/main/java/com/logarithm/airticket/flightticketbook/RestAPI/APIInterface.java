@@ -14,6 +14,7 @@ import com.logarithm.airticket.flightticketbook.ParametersClass.AddAirport;
 import com.logarithm.airticket.flightticketbook.ParametersClass.AddFlight;
 import com.logarithm.airticket.flightticketbook.ParametersClass.Credentials;
 import com.logarithm.airticket.flightticketbook.ParametersClass.DeleteAirport;
+import com.logarithm.airticket.flightticketbook.ParametersClass.DeleteBooking;
 import com.logarithm.airticket.flightticketbook.ParametersClass.GetSpecFlight;
 import com.logarithm.airticket.flightticketbook.ParametersClass.Register;
 
@@ -80,6 +81,10 @@ public interface APIInterface {
 
     @GET("booking/viewallbookings")
     Call<ViewBooking> viewAllBookings(@Header("Authorization") String token);
+
+
+    @POST("booking/deletebooking")
+    Call<Response> deleteBooking(@Header("Authorization") String token,@Body DeleteBooking id);
 
 
 

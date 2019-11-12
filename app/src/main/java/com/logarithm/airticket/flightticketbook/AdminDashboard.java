@@ -56,7 +56,6 @@ public class AdminDashboard extends AppCompatActivity {
             }
         });
 
-
         addFlight.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
