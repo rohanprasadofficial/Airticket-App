@@ -7,6 +7,13 @@
      android:background="#fff"
     tools:context="com.logarithm.airticket.flightticketbook.ConfirmTicketActivity">
 
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -320,36 +327,35 @@
     </LinearLayout>
 </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:orientation="vertical"
-        android:layout_marginBottom="15dp"
-        android:layout_alignParentBottom="true"
-       >
-   <ImageView
-       android:layout_width="match_parent"
-       android:layout_height="150dp"
-       android:layout_gravity="end"
-       android:paddingBottom="10dp"
-       android:src="@drawable/qrcode"/>
-    </LinearLayout>
+
 
     </RelativeLayout>
-
-
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:orientation="vertical"
+                android:layout_marginBottom="15dp"
+                android:layout_marginTop="100dp"
+                android:layout_alignParentBottom="true"
+                >
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="150dp"
+                    android:layout_gravity="end"
+                    android:paddingBottom="10dp"
+                    android:src="@drawable/qrcode"/>
+            </LinearLayout>
 
     <customfonts.MyTextView_Roboto_Medium
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-
+        android:layout_marginTop="200dp"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="133dp"
         android:layout_weight="1"
         android:gravity="left"
         android:text="A2"
         android:textColor="@color/textcolor"
         android:textSize="18dp" />
-
-
+    </LinearLayout>
+    </ScrollView>
 </RelativeLayout>

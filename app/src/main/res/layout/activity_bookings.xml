@@ -5,7 +5,6 @@
     android:layout_height="match_parent"
     tools:context=".Bookings">
 
-
     <TextView
         android:id="@+id/textView_item"
         android:layout_width="match_parent"

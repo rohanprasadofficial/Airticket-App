@@ -1,15 +1,19 @@
 package com.logarithm.airticket.flightticketbook;
 
+import android.annotation.SuppressLint;
 import android.app.AlertDialog;
+import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -17,7 +21,12 @@ import com.logarithm.airticket.flightticketbook.ParametersClass.Credentials;
 import com.logarithm.airticket.flightticketbook.RestAPI.APIClient;
 import com.logarithm.airticket.flightticketbook.RestAPI.APIInterface;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Locale;
+
+import javax.xml.transform.Source;
 
 import dmax.dialog.SpotsDialog;
 import retrofit2.Call;
@@ -35,7 +44,8 @@ public class AddFlight extends AppCompatActivity {
     ArrayList<String> fruits;
     AutoCompleteTextView actv;
 
-    public String TO="Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiYWRtaW4iLCJpZCI6IjVkYzJmY2Y0N2UzOGQ2MzY2NThkOGQ3NSIsImVtYWlsIjoiYWRtaW5AZ21haWwuY29tIiwicGFzc3dvcmQiOiIkMmEkMTAkNkM1ZTF0QnEyYjZCUkdtbGxPMTZnZXVVOEQzOFA1S1dkQkJRL0JDNGdOeEdGVjNsaC85S2UiLCJwcm9maWxlcGljIjoiaHR0cHM6Ly9lZGxpZmUuZWR1Lm12L3dwLWNvbnRlbnQvdXBsb2Fkcy8yMDE3LzA1LzIwMTYxMDE0XzU4MDA2YmZkNzZkY2YucG5nIiwiaWF0IjoxNTczMjkyNzc0fQ.p_79D_Hm1izze-4nb4TkJnjFOJRSyhwrkD6f6ZqNp10";
+    Calendar myCalendar = Calendar.getInstance();
+    Calendar myCalendar1 = Calendar.getInstance();
     AutoCompleteTextView actvv;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -89,8 +99,6 @@ public class AddFlight extends AppCompatActivity {
             Toast.makeText(this, "Something went wrong", Toast.LENGTH_SHORT).show();
         }
 
-
-
         name=findViewById(R.id.edt_name);
         flightNo=findViewById(R.id.edt_flightNumber);
         flightID=findViewById(R.id.edt_flightID);
@@ -103,6 +111,57 @@ public class AddFlight extends AppCompatActivity {
         PPrice=findViewById(R.id.PclassPrice);
         EPrice=findViewById(R.id.EclassPrice);
         addFlight=findViewById(R.id.btn_add);
+
+
+
+        final DatePickerDialog.OnDateSetListener date = new DatePickerDialog.OnDateSetListener() {
+
+            @Override
+            public void onDateSet(DatePicker view, int year, int monthOfYear,
+                                  int dayOfMonth) {
+                // TODO Auto-generated method stub
+                /*  myCalendar.set(Calendar.YEAR, year);*/
+                myCalendar.set(Calendar.MONTH, monthOfYear);
+                myCalendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+                updateLabel();
+            }
+
+        };
+
+
+        final DatePickerDialog.OnDateSetListener date2= new DatePickerDialog.OnDateSetListener() {
+
+            @Override
+            public void onDateSet(DatePicker view, int year, int monthOfYear,
+                                  int dayOfMonth) {
+                // TODO Auto-generated method stub
+                /*  myCalendar.set(Calendar.YEAR, year);*/
+                myCalendar1.set(Calendar.MONTH, monthOfYear);
+                myCalendar1.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+                updateLabel1();
+            }
+
+        };
+
+        sourceDate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                new DatePickerDialog(AddFlight.this, date, myCalendar
+                        .get(Calendar.YEAR), myCalendar.get(Calendar.MONTH),
+                        myCalendar.get(Calendar.DAY_OF_MONTH)).show();
+            }
+        });
+
+
+       destDate.setOnClickListener(new View.OnClickListener() {
+           @Override
+           public void onClick(View view) {
+               new DatePickerDialog(AddFlight.this, date2, myCalendar1
+                       .get(Calendar.YEAR), myCalendar1.get(Calendar.MONTH),
+                       myCalendar1.get(Calendar.DAY_OF_MONTH)).show();
+           }
+       });
+
 
 
         ArrayAdapter<String> adapter = new ArrayAdapter<String>
@@ -175,4 +234,20 @@ public class AddFlight extends AppCompatActivity {
 
 
     }
+
+    private void updateLabel() {
+        String myFormat = "MMM dd"; //In which you need put here
+        SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.ENGLISH);
+        sourceDate.setText(sdf.format(myCalendar.getTime()));
+        //edittext2.setText(sdf.format(myCalendar2.getTime()));
+    }
+
+    private void updateLabel1() {
+        String myFormat = "MMM dd"; //In which you need put here
+        SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.ENGLISH);
+        destDate.setText(sdf.format(myCalendar1.getTime()));
+        //edittext2.setText(sdf.format(myCalendar2.getTime()));
+    }
+
+
 }
