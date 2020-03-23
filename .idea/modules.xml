@@ -2,6 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/AirTicket.iml" filepath="$PROJECT_DIR$/AirTicket.iml" group="AirTicket" />
+      <module fileurl="file://$PROJECT_DIR$/app/AirTicket-app.iml" filepath="$PROJECT_DIR$/app/AirTicket-app.iml" group="AirTicket/app" />
       <module fileurl="file://$PROJECT_DIR$/FlightTicketBook.iml" filepath="$PROJECT_DIR$/FlightTicketBook.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>

@@ -75,7 +75,7 @@ public class Register extends AppCompatActivity {
                         @Override
                         public void onFailure(Call<com.logarithm.airticket.flightticketbook.ModelClass.Register.Register> call, Throwable t) {
                             Toast.makeText(Register.this, "Something Went Wrong", Toast.LENGTH_SHORT).show();
-
+                            t.printStackTrace();
                             alertDialog.dismiss();
 
                         }
